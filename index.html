@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Humanoide — la rivista di AssoUmanoidi</title>
+<meta name="description" content="Humanoide è la rivista di AssoUmanoidi: trimestrale di cultura, innovazione e società sulla convivenza tra esseri umani e umanoidi. Online First, numero 1 in uscita a dicembre 2026.">
+<link rel="canonical" href="https://humanoideonline.com/">
+<meta property="og:title" content="Humanoide — idee, persone, futuro">
+<meta property="og:description" content="La rivista di AssoUmanoidi sulla convivenza tra esseri umani e umanoidi.">
+<meta property="og:image" content="https://humanoideonline.com/rivista-copertina.webp">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b1d3a">
+<style>
+  :root {
+    --navy: #0b1d3a; --navy-2: #13294f; --oro: #d4a843; --bianco: #f4f4f4;
+    --grigio: #aab4c8; --linea: rgba(244,244,244,.14);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--navy); color: var(--bianco);
+    font: 400 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--oro); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  header.top { display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0; border-bottom: 1px solid var(--linea); }
+  .marchio { font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; color: var(--bianco); text-decoration: none; }
+  .lingua button { background: none; border: 1px solid var(--linea); color: var(--grigio);
+    border-radius: 999px; padding: 6px 14px; margin-left: 6px; font: inherit; font-size: 13px; cursor: pointer; }
+  .lingua button[aria-pressed="true"] { background: var(--oro); border-color: var(--oro); color: var(--navy); font-weight: 700; }
+  .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; padding: 72px 0 56px; }
+  .etichetta { color: var(--oro); font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+  h1 { font-size: clamp(40px, 6vw, 68px); line-height: 1.02; margin: 14px 0 18px; font-weight: 800; letter-spacing: -.02em; }
+  h1 .o { color: var(--oro); }
+  .lead { color: var(--grigio); font-size: 19px; max-width: 34em; }
+  .azioni { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 13px 24px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px; }
+  .btn-pieno { background: var(--oro); color: var(--navy); }
+  .btn-linea { border: 1px solid var(--linea); color: var(--bianco); }
+  .copertina img { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); }
+  .stato { display: flex; gap: 10px; align-items: flex-start; background: var(--navy-2); border: 1px solid var(--linea);
+    border-radius: 10px; padding: 18px 20px; margin: 8px 0 56px; color: var(--grigio); font-size: 15px; }
+  .stato strong { color: var(--bianco); }
+  .punto { width: 9px; height: 9px; border-radius: 50%; background: var(--oro); margin-top: 8px; flex: none; }
+  h2 { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--oro); margin: 0 0 22px; font-weight: 700; }
+  .sommario { list-style: none; padding: 0; margin: 0 0 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .sommario li { background: var(--navy-2); border: 1px solid var(--linea); border-radius: 10px; padding: 20px; }
+  .sommario em { display: block; font-style: normal; color: var(--oro); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+  .sommario h3 { margin: 8px 0 6px; font-size: 19px; line-height: 1.25; }
+  .sommario p { margin: 0; color: var(--grigio); font-size: 15px; }
+  .iscriviti { border-top: 1px solid var(--linea); padding: 56px 0; text-align: center; }
+  .iscriviti p { color: var(--grigio); max-width: 36em; margin: 0 auto 26px; }
+  footer { border-top: 1px solid var(--linea); padding: 28px 0 40px; color: var(--grigio); font-size: 14px; }
+  footer nav { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 14px; }
+  footer a { color: var(--grigio); }
+  [hidden] { display: none !important; }
+  @media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; padding-top: 44px; }
+    .copertina { order: -1; max-width: 360px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="marchio" href="/">Humanoide</a>
+    <div class="lingua" role="group" aria-label="Lingua / Language">
+      <button type="button" data-lingua="it" aria-pressed="true" lang="it">Italiano</button>
+      <button type="button" data-lingua="en" aria-pressed="false" lang="en">English</button>
+    </div>
+  </header>
+
+  <!-- ITALIANO -->
+  <div lang="it" data-blocco="it">
+    <section class="hero">
+      <div>
+        <div class="etichetta">Trimestrale di cultura, innovazione e società</div>
+        <h1>Idee.<br><span class="o">Persone.</span><br>Futuro.</h1>
+        <p class="lead">Humanoide è la rivista di AssoUmanoidi: storie, idee e progetti per capire oggi e costruire il futuro. Quattro numeri l'anno su tecnologia, società, scienza e filosofia della convivenza tra esseri umani e umanoidi.</p>
+        <div class="azioni">
+          <a class="btn btn-pieno" href="https://assoumanoidi.it/#aderisci">Iscriviti per riceverla</a>
+          <a class="btn btn-linea" href="#numero-uno">Il numero 1</a>
+        </div>
+      </div>
+      <figure class="copertina" style="margin:0">
+        <img src="rivista-copertina.webp" width="1024" height="1024" alt="Copertina di Humanoide, numero 1, gennaio–marzo 2027">
+      </figure>
+    </section>
+
+    <div class="stato">
+      <span class="punto" aria-hidden="true"></span>
+      <div><strong>Online First.</strong> Gli articoli escono in anteprima su questo sito, in attesa del fascicolo trimestrale, che è la versione definitiva (Version of Record). Il numero 1 esce a dicembre 2026 e copre il periodo gennaio–marzo 2027.</div>
+    </div>
+
+    <section id="numero-uno">
+      <h2>Numero 1 · gennaio–marzo 2027</h2>
+      <ol class="sommario">
+        <li><em>Tecnologia</em><h3>Umana per scelta</h3><p>L'innovazione che mette le persone al centro.</p></li>
+        <li><em>Intervista</em><h3>Dario Amodei</h3><p>L'intelligenza artificiale e le nostre scelte di domani.</p></li>
+        <li><em>Società</em><h3>Nuove identità</h3><p>Diritti, lavoro e relazioni nell'era digitale.</p></li>
+        <li><em>Filosofia</em><h3>Libertà e responsabilità</h3><p>Il significato etico delle nostre scelte.</p></li>
+        <li><em>Cultura</em><h3>Visioni</h3><p>Le storie che ispirano il cambiamento.</p></li>
+        <li><em>Scienza</em><h3>Corpo e mente</h3><p>Le frontiere della ricerca.</p></li>
+        <li><em>Visioni</em><h3>Progettare il futuro</h3><p>Architetture, design e idee per un mondo migliore.</p></li>
+      </ol>
+    </section>
+
+    <section class="iscriviti">
+      <h2>Il futuro della convivenza si legge insieme</h2>
+      <p>La rivista è un progetto di AssoUmanoidi. Iscrivendoti all'associazione ricevi il numero trimestrale e le novità sulla rivista.</p>
+      <a class="btn btn-pieno" href="https://assoumanoidi.it/#aderisci">Iscriviti per riceverla</a>
+    </section>
+  </div>
+
+  <!-- ENGLISH -->
+  <div lang="en" data-blocco="en" hidden>
+    <section class="hero">
+      <div>
+        <div class="etichetta">Quarterly of culture, innovation and society</div>
+        <h1>Ideas.<br><span class="o">People.</span><br>Future.</h1>
+        <p class="lead">Humanoide is the magazine of AssoUmanoidi: stories, ideas and projects to understand today and build the future. Four issues a year on technology, society, science and the philosophy of coexistence between humans and humanoids.</p>
+        <div class="azioni">
+          <a class="btn btn-pieno" href="https://assoumanoidi.it/en/#aderisci">Subscribe to receive it</a>
+          <a class="btn btn-linea" href="#numero-uno-en">Issue 1</a>
+        </div>
+      </div>
+      <figure class="copertina" style="margin:0">
+        <img src="rivista-copertina.webp" width="1024" height="1024" alt="Cover of Humanoide, issue 1, January–March 2027">
+      </figure>
+    </section>
+
+    <div class="stato">
+      <span class="punto" aria-hidden="true"></span>
+      <div><strong>Online First.</strong> Articles appear in preview on this site, ahead of the quarterly issue, which is the definitive edition (Version of Record). Issue 1 comes out in December 2026 and covers January–March 2027.</div>
+    </div>
+
+    <section id="numero-uno-en">
+      <h2>Issue 1 · January–March 2027</h2>
+      <ol class="sommario">
+        <li><em>Technology</em><h3>Human by choice</h3><p>Innovation that puts people first.</p></li>
+        <li><em>Interview</em><h3>Dario Amodei</h3><p>Artificial intelligence and our choices of tomorrow.</p></li>
+        <li><em>Society</em><h3>New identities</h3><p>Rights, work and relationships in the digital age.</p></li>
+        <li><em>Philosophy</em><h3>Freedom and responsibility</h3><p>The ethical meaning of our choices.</p></li>
+        <li><em>Culture</em><h3>Visions</h3><p>The stories that inspire change.</p></li>
+        <li><em>Science</em><h3>Body and mind</h3><p>The frontiers of research.</p></li>
+        <li><em>Visions</em><h3>Designing the future</h3><p>Architecture, design and ideas for a better world.</p></li>
+      </ol>
+    </section>
+
+    <section class="iscriviti">
+      <h2>The future of coexistence is read together</h2>
+      <p>The magazine is a project of AssoUmanoidi. By joining the association you receive the quarterly issue and news about the journal.</p>
+      <a class="btn btn-pieno" href="https://assoumanoidi.it/en/#aderisci">Subscribe to receive it</a>
+    </section>
+  </div>
+
+  <footer>
+    <nav>
+      <a href="https://assoumanoidi.it/rivista/colophon">Colophon</a>
+      <a href="https://assoumanoidi.it/rivista/norme-per-autori">Norme per gli autori</a>
+      <a href="https://assoumanoidi.it/en/journal/colophon">Colophon (EN)</a>
+      <a href="https://assoumanoidi.it/en/journal/author-guidelines">Author guidelines (EN)</a>
+      <a href="https://assoumanoidi.it">AssoUmanoidi</a>
+    </nav>
+    <div>© AssoUmanoidi – Associazione per i diritti degli umanoidi. Humanoide è edita da AssoUmanoidi.</div>
+  </footer>
+</div>
+
+<script>
+  // lingua: si ricorda la scelta; senza JavaScript resta l'italiano
+  (function () {
+    var bottoni = document.querySelectorAll('[data-lingua]');
+    var blocchi = document.querySelectorAll('[data-blocco]');
+    function mostra(l) {
+      blocchi.forEach(function (b) { b.hidden = b.getAttribute('data-blocco') !== l; });
+      bottoni.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lingua') === l)); });
+      document.documentElement.lang = l;
+      try { localStorage.setItem('humanoide-lingua', l); } catch (e) {}
+    }
+    bottoni.forEach(function (b) { b.addEventListener('click', function () { mostra(b.getAttribute('data-lingua')); }); });
+    var salvata = null;
+    try { salvata = localStorage.getItem('humanoide-lingua'); } catch (e) {}
+    if (salvata === 'en') mostra('en');
+  })();
+</script>
+</body>
+</html>
