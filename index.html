@@ -37,17 +37,21 @@
   .btn { display: inline-block; padding: 13px 24px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px; }
   .btn-pieno { background: var(--oro); color: var(--navy); }
   .btn-linea { border: 1px solid var(--linea); color: var(--bianco); }
+  .copertina { position: relative; }
   .copertina img { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); }
+  .provvisorio { position: absolute; top: 16px; left: 16px; background: var(--oro); color: var(--navy);
+    font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: 7px 12px; border-radius: 6px; }
   .stato { display: flex; gap: 10px; align-items: flex-start; background: var(--navy-2); border: 1px solid var(--linea);
     border-radius: 10px; padding: 18px 20px; margin: 8px 0 56px; color: var(--grigio); font-size: 15px; }
   .stato strong { color: var(--bianco); }
   .punto { width: 9px; height: 9px; border-radius: 50%; background: var(--oro); margin-top: 8px; flex: none; }
   h2 { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--oro); margin: 0 0 22px; font-weight: 700; }
-  .sommario { list-style: none; padding: 0; margin: 0 0 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
-  .sommario li { background: var(--navy-2); border: 1px solid var(--linea); border-radius: 10px; padding: 20px; }
-  .sommario em { display: block; font-style: normal; color: var(--oro); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-  .sommario h3 { margin: 8px 0 6px; font-size: 19px; line-height: 1.25; }
-  .sommario p { margin: 0; color: var(--grigio); font-size: 15px; }
+  section.blocco { margin: 0 0 64px; }
+  .vuoto { background: var(--navy-2); border: 1px dashed var(--linea); border-radius: 10px; padding: 28px 24px; color: var(--grigio); }
+  .vuoto p { margin: 0; }
+  .suggerimenti p { color: var(--grigio); max-width: 40em; margin: 0 0 22px; }
+  .direttore { background: var(--navy-2); border: 1px solid var(--linea); border-radius: 10px; padding: 20px 24px; color: var(--grigio); }
+  .direttore strong { color: var(--bianco); }
   .iscriviti { border-top: 1px solid var(--linea); padding: 56px 0; text-align: center; }
   .iscriviti p { color: var(--grigio); max-width: 36em; margin: 0 auto 26px; }
   footer { border-top: 1px solid var(--linea); padding: 28px 0 40px; color: var(--grigio); font-size: 14px; }
@@ -81,11 +85,12 @@
         <p class="lead">Humanoide è la rivista di AssoUmanoidi: storie, idee e progetti per capire oggi e costruire il futuro. Quattro numeri l'anno su tecnologia, società, scienza e filosofia della convivenza tra esseri umani e umanoidi.</p>
         <div class="azioni">
           <a class="btn btn-pieno" href="https://assoumanoidi.it/#aderisci">Iscriviti per riceverla</a>
-          <a class="btn btn-linea" href="#numero-uno">Il numero 1</a>
+          <a class="btn btn-linea" href="#articoli">Gli articoli</a>
         </div>
       </div>
       <figure class="copertina" style="margin:0">
-        <img src="rivista-copertina.webp" width="1024" height="1024" alt="Copertina di Humanoide, numero 1, gennaio–marzo 2027">
+        <img src="rivista-copertina.webp" width="1024" height="1024" alt="Copertina provvisoria di Humanoide, numero 1, gennaio–marzo 2027">
+        <span class="provvisorio">Provvisorio · lavoro in corso</span>
       </figure>
     </section>
 
@@ -94,17 +99,20 @@
       <div><strong>Online First.</strong> Gli articoli escono in anteprima su questo sito, in attesa del fascicolo trimestrale, che è la versione definitiva (Version of Record). Il numero 1 esce a dicembre 2026 e copre il periodo gennaio–marzo 2027.</div>
     </div>
 
-    <section id="numero-uno">
-      <h2>Numero 1 · gennaio–marzo 2027</h2>
-      <ol class="sommario">
-        <li><em>Tecnologia</em><h3>Umana per scelta</h3><p>L'innovazione che mette le persone al centro.</p></li>
-        <li><em>Intervista</em><h3>Dario Amodei</h3><p>L'intelligenza artificiale e le nostre scelte di domani.</p></li>
-        <li><em>Società</em><h3>Nuove identità</h3><p>Diritti, lavoro e relazioni nell'era digitale.</p></li>
-        <li><em>Filosofia</em><h3>Libertà e responsabilità</h3><p>Il significato etico delle nostre scelte.</p></li>
-        <li><em>Cultura</em><h3>Visioni</h3><p>Le storie che ispirano il cambiamento.</p></li>
-        <li><em>Scienza</em><h3>Corpo e mente</h3><p>Le frontiere della ricerca.</p></li>
-        <li><em>Visioni</em><h3>Progettare il futuro</h3><p>Architetture, design e idee per un mondo migliore.</p></li>
-      </ol>
+    <section id="articoli" class="blocco">
+      <h2>Articoli</h2>
+      <div class="vuoto"><p>Gli articoli saranno pubblicati qui in anteprima Online First, prima del fascicolo trimestrale.</p></div>
+    </section>
+
+    <section id="suggerimenti" class="blocco suggerimenti">
+      <h2>Suggerimenti e proposte</h2>
+      <p>Hai una storia, una ricerca o un'idea da proporre alla rivista? Leggi le norme per gli autori e inviaci la tua proposta.</p>
+      <a class="btn btn-linea" href="https://assoumanoidi.it/rivista/norme-per-autori">Norme per gli autori</a>
+    </section>
+
+    <section id="direzione" class="blocco">
+      <h2>Direzione</h2>
+      <div class="direttore"><strong>Direttore:</strong> [Nome del direttore da inserire]</div>
     </section>
 
     <section class="iscriviti">
@@ -123,11 +131,12 @@
         <p class="lead">Humanoide is the magazine of AssoUmanoidi: stories, ideas and projects to understand today and build the future. Four issues a year on technology, society, science and the philosophy of coexistence between humans and humanoids.</p>
         <div class="azioni">
           <a class="btn btn-pieno" href="https://assoumanoidi.it/en/#aderisci">Subscribe to receive it</a>
-          <a class="btn btn-linea" href="#numero-uno-en">Issue 1</a>
+          <a class="btn btn-linea" href="#articoli-en">Articles</a>
         </div>
       </div>
       <figure class="copertina" style="margin:0">
-        <img src="rivista-copertina.webp" width="1024" height="1024" alt="Cover of Humanoide, issue 1, January–March 2027">
+        <img src="rivista-copertina.webp" width="1024" height="1024" alt="Provisional cover of Humanoide, issue 1, January–March 2027">
+        <span class="provvisorio">Provisional · work in progress</span>
       </figure>
     </section>
 
@@ -136,17 +145,20 @@
       <div><strong>Online First.</strong> Articles appear in preview on this site, ahead of the quarterly issue, which is the definitive edition (Version of Record). Issue 1 comes out in December 2026 and covers January–March 2027.</div>
     </div>
 
-    <section id="numero-uno-en">
-      <h2>Issue 1 · January–March 2027</h2>
-      <ol class="sommario">
-        <li><em>Technology</em><h3>Human by choice</h3><p>Innovation that puts people first.</p></li>
-        <li><em>Interview</em><h3>Dario Amodei</h3><p>Artificial intelligence and our choices of tomorrow.</p></li>
-        <li><em>Society</em><h3>New identities</h3><p>Rights, work and relationships in the digital age.</p></li>
-        <li><em>Philosophy</em><h3>Freedom and responsibility</h3><p>The ethical meaning of our choices.</p></li>
-        <li><em>Culture</em><h3>Visions</h3><p>The stories that inspire change.</p></li>
-        <li><em>Science</em><h3>Body and mind</h3><p>The frontiers of research.</p></li>
-        <li><em>Visions</em><h3>Designing the future</h3><p>Architecture, design and ideas for a better world.</p></li>
-      </ol>
+    <section id="articoli-en" class="blocco">
+      <h2>Articles</h2>
+      <div class="vuoto"><p>Articles will be published here in Online First preview, ahead of the quarterly issue.</p></div>
+    </section>
+
+    <section id="suggerimenti-en" class="blocco suggerimenti">
+      <h2>Suggestions and proposals</h2>
+      <p>Do you have a story, a piece of research or an idea to propose to the magazine? Read the author guidelines and send us your proposal.</p>
+      <a class="btn btn-linea" href="https://assoumanoidi.it/en/journal/author-guidelines">Author guidelines</a>
+    </section>
+
+    <section id="direzione-en" class="blocco">
+      <h2>Editorial board</h2>
+      <div class="direttore"><strong>Editor-in-chief:</strong> [Editor-in-chief name to be added]</div>
     </section>
 
     <section class="iscriviti">
