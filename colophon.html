@@ -1,65 +1,49 @@
 <!doctype html>
-<html lang="it">
+<html lang="it" data-titolo-it="Colophon – Humanoide, la rivista di AssoUmanoidi" data-titolo-en="Colophon – Humanoide, the journal of AssoUmanoidi">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Colophon — Humanoide</title>
+<title>Colophon – Humanoide, la rivista di AssoUmanoidi</title>
 <meta name="description" content="Direzione, redazione, modello Online First, lingue, accesso e note legali di Humanoide, la rivista ufficiale di AssoUmanoidi.">
 <link rel="canonical" href="https://humanoideonline.com/colophon.html">
 <meta name="theme-color" content="#0b1d3a">
-<style>
-  :root {
-    --navy: #0b1d3a; --navy-2: #13294f; --oro: #d4a843; --bianco: #f4f4f4;
-    --grigio: #aab4c8; --linea: rgba(244,244,244,.14);
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--navy); color: var(--bianco);
-    font: 400 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  a { color: var(--oro); }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
-  header.top { display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 0; border-bottom: 1px solid var(--linea); }
-  .marchio { font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; color: var(--bianco); text-decoration: none; }
-  .lingua button { background: none; border: 1px solid var(--linea); color: var(--grigio);
-    border-radius: 999px; padding: 6px 14px; margin-left: 6px; font: inherit; font-size: 13px; cursor: pointer; }
-  .lingua button[aria-pressed="true"] { background: var(--oro); border-color: var(--oro); color: var(--navy); font-weight: 700; }
-  .etichetta { color: var(--oro); font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-top: 48px; }
-  h1 { font-size: clamp(36px, 5vw, 52px); line-height: 1.05; margin: 12px 0 16px; font-weight: 800; letter-spacing: -.02em; }
-  .intro { color: var(--grigio); font-size: 18px; max-width: 40em; margin: 0 0 40px; }
-  h2 { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--oro); margin: 40px 0 14px; font-weight: 700; }
-  dl { margin: 0; border-top: 1px solid var(--linea); }
-  .riga { display: grid; grid-template-columns: minmax(180px, 1fr) 2fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--linea); }
-  dt { color: var(--grigio); font-size: 14px; }
-  dd { margin: 0; color: var(--bianco); }
-  .sospeso { color: var(--grigio); font-style: italic; }
-  .blocco p { margin: 0 0 14px; color: var(--grigio); }
-  .evidenza { background: var(--navy-2); border: 1px solid var(--linea); border-radius: 10px; padding: 20px 22px; margin: 28px 0; }
-  .evidenza p { margin: 0; color: var(--grigio); }
-  .evidenza strong { color: var(--bianco); }
-  footer { border-top: 1px solid var(--linea); padding: 28px 0 40px; margin-top: 56px; color: var(--grigio); font-size: 14px; }
-  footer nav { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 14px; }
-  footer a { color: var(--grigio); }
-  [hidden] { display: none !important; }
-  @media (max-width: 640px) { .riga { grid-template-columns: 1fr; gap: 4px; } }
-</style>
+<link rel="stylesheet" href="stile.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
+<a class="salta" href="#contenuto"><span lang="it">Vai al contenuto</span><span lang="en">Skip to content</span></a>
+<div class="avanza" aria-hidden="true"><i id="avanza"></i></div>
 
-<div class="wrap">
-  <header class="top">
-    <a class="marchio" href="index.html">Humanoide</a>
-    <div class="lingua" role="group" aria-label="Lingua / Language">
-      <button type="button" data-lingua="it" aria-pressed="true" lang="it">Italiano</button>
-      <button type="button" data-lingua="en" aria-pressed="false" lang="en">English</button>
+<header class="testa" id="testa">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Humanoide"><img src="humanoide-testata.webp" width="720" height="101" alt="Humanoide"></a>
+    <nav class="nav" aria-label="Sezioni / Sections">
+      <a href="index.html#come"><span lang="it">Come si legge</span><span lang="en">How to read</span></a>
+      <a href="index.html#articoli"><span lang="it">Articoli</span><span lang="en">Articles</span></a>
+      <a href="index.html#direzione"><span lang="it">Direzione</span><span lang="en">Editorial board</span></a>
+      <a href="index.html#consiglio"><span lang="it">Consiglio scientifico</span><span lang="en">Scientific Council</span></a>
+      <a href="index.html#scrivi"><span lang="it">Scrivi per noi</span><span lang="en">Write for us</span></a>
+    </nav>
+    <div class="destra">
+      <div class="lingua" role="group" aria-label="Lingua / Language">
+        <button type="button" data-lingua="it" aria-pressed="true" aria-label="IT – Italiano">IT</button>
+        <button type="button" data-lingua="en" aria-pressed="false" aria-label="EN – English">EN</button>
+      </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- ITALIANO -->
-  <main lang="it" data-blocco="it">
-    <div class="etichetta">La rivista – Colophon</div>
-    <h1>Colophon</h1>
-    <p class="intro">Rivista ufficiale dell’Associazione per i diritti degli umanoidi (AssoUmanoidi). Chi la dirige, come si pubblica, in che lingua, con quali diritti.</p>
-
+<main id="contenuto">
+  <div lang="it">
+    <section class="pag-hero">
+      <div class="wrap">
+        <p class="occhiello">La rivista – Colophon</p>
+        <h1>Colophon</h1>
+        <p class="lead">Rivista ufficiale dell’Associazione per i diritti degli umanoidi (AssoUmanoidi). Chi la dirige, come si pubblica, in che lingua, con quali diritti.</p>
+      </div>
+    </section>
+    <section class="pag-corpo carta">
+      <div class="wrap-s">
     <h2>Redazione</h2>
     <dl>
       <div class="riga"><dt>Editore</dt><dd>AssoUmanoidi – Associazione per i diritti degli umanoidi</dd></div>
@@ -94,14 +78,19 @@
       <p><strong>Proprietà intellettuale e note legali.</strong> I contributi firmati esprimono esclusivamente le opinioni degli Autori. I materiali inviati alla redazione, anche se non pubblicati, non saranno restituiti. La riproduzione anche parziale, la diffusione, la ripubblicazione o il riutilizzo commerciale dei testi e dei file PDF sono tassativamente vietati senza autorizzazione scritta dell’editore, salvi gli usi citazionali consentiti dalla legge sul diritto d’autore (L. 633/1941).</p>
       <p><strong>Trattamento dati personali (GDPR).</strong> Il Titolare del trattamento dei dati è AssoUmanoidi – Associazione per i diritti degli umanoidi. I dati personali di autori, lettori e abbonati sono trattati esclusivamente per le finalità legate alla pubblicazione, gestione e spedizione della rivista Humanoide, nel rispetto del Regolamento UE 2016/679 (GDPR). I servizi di hosting dei siti web sono forniti da Netlify, Inc. Per l’esercizio dei diritti di accesso, rettifica o cancellazione, è possibile contattare l’indirizzo email privacy@assoumanoidi.it.</p>
     </div>
-  </main>
-
-  <!-- ENGLISH -->
-  <main lang="en" data-blocco="en" hidden>
-    <div class="etichetta">The journal – Colophon</div>
-    <h1>Colophon</h1>
-    <p class="intro">Official journal of the Association for Humanoid Rights (AssoUmanoidi). Who runs it, how it is published, in which languages, under which rights.</p>
-
+      </div>
+    </section>
+  </div>
+  <div lang="en">
+    <section class="pag-hero">
+      <div class="wrap">
+        <p class="occhiello">The journal – Colophon</p>
+        <h1>Colophon</h1>
+        <p class="lead">Official journal of the Association for Humanoid Rights (AssoUmanoidi). Who runs it, how it is published, in which languages, under which rights.</p>
+      </div>
+    </section>
+    <section class="pag-corpo carta">
+      <div class="wrap-s">
     <h2>Editorial team</h2>
     <dl>
       <div class="riga"><dt>Publisher</dt><dd>AssoUmanoidi – Association for Humanoid Rights</dd></div>
@@ -136,34 +125,23 @@
       <p><strong>Intellectual Property and Legal Notices.</strong> Signed contributions exclusively express the opinions of the Authors. Materials submitted to the editorial staff, even if unpublished, will not be returned. Any reproduction, even partial, dissemination, republication, or commercial reuse of the texts and PDF files is strictly prohibited without the written authorization of the publisher, without prejudice to fair use for citation purposes permitted by copyright law (Law 633/1941).</p>
       <p><strong>Personal Data Processing (GDPR).</strong> The Data Controller is AssoUmanoidi – Association for Humanoid Rights. Personal data of authors, readers, and subscribers are processed exclusively for purposes related to the publication, management, and distribution of the journal Humanoide, in compliance with EU Regulation 2016/679 (GDPR). The hosting services for the websites are provided by Netlify, Inc. To exercise the rights of access, rectification, or erasure, you may contact the email address privacy@assoumanoidi.it.</p>
     </div>
-  </main>
+      </div>
+    </section>
+  </div>
+</main>
 
-  <footer>
-    <nav>
-      <a href="index.html">Humanoide</a>
-      <a href="https://assoumanoidi.it">AssoUmanoidi</a>
-      <a href="https://assoumanoidi.it/rivista/norme-per-autori">Norme per gli autori</a>
+<footer>
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Humanoide"><img src="humanoide-testata.webp" width="720" height="101" alt="Humanoide"></a>
+    <nav aria-label="Link / Links">
+      <a href="index.html"><span lang="it">Torna alla rivista</span><span lang="en">Back to the journal</span></a>
+      <a href="https://assoumanoidi.it/rivista/norme-per-autori" data-it="https://assoumanoidi.it/rivista/norme-per-autori" data-en="https://assoumanoidi.it/en/journal/author-guidelines"><span lang="it">Norme per gli autori</span><span lang="en">Author guidelines</span></a>
+      <a href="https://assoumanoidi.it" data-it="https://assoumanoidi.it" data-en="https://assoumanoidi.it/en">AssoUmanoidi</a>
     </nav>
-    <div>© AssoUmanoidi – Associazione per i diritti degli umanoidi. Humanoide è edita da AssoUmanoidi.</div>
-  </footer>
-</div>
+    <p style="margin:0"><span lang="it">© AssoUmanoidi – Associazione per i diritti degli umanoidi. Humanoide è edita da AssoUmanoidi.</span><span lang="en">© AssoUmanoidi – Association for Humanoid Rights. Humanoide is published by AssoUmanoidi.</span></p>
+  </div>
+</footer>
 
-<script>
-  // lingua: si ricorda la scelta; senza JavaScript resta l'italiano
-  (function () {
-    var bottoni = document.querySelectorAll('[data-lingua]');
-    var blocchi = document.querySelectorAll('[data-blocco]');
-    function mostra(l) {
-      blocchi.forEach(function (b) { b.hidden = b.getAttribute('data-blocco') !== l; });
-      bottoni.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lingua') === l)); });
-      document.documentElement.lang = l;
-      try { localStorage.setItem('humanoide-lingua', l); } catch (e) {}
-    }
-    bottoni.forEach(function (b) { b.addEventListener('click', function () { mostra(b.getAttribute('data-lingua')); }); });
-    var salvata = null;
-    try { salvata = localStorage.getItem('humanoide-lingua'); } catch (e) {}
-    if (salvata === 'en') mostra('en');
-  })();
-</script>
+<script src="app.js" defer></script>
 </body>
 </html>

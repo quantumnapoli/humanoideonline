@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it">
+<html lang="it" data-titolo-it="Humanoide — la rivista di AssoUmanoidi" data-titolo-en="Humanoide — the journal of AssoUmanoidi">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,243 +11,274 @@
 <meta property="og:image" content="https://humanoideonline.com/rivista-copertina.webp">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0b1d3a">
-<style>
-  :root {
-    --navy: #0b1d3a; --navy-2: #13294f; --oro: #d4a843; --bianco: #f4f4f4;
-    --grigio: #aab4c8; --linea: rgba(244,244,244,.14);
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--navy); color: var(--bianco);
-    font: 400 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  a { color: var(--oro); }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-  header.top { display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 0; border-bottom: 1px solid var(--linea); }
-  .marchio { font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: 14px; color: var(--bianco); text-decoration: none; }
-  .lingua button { background: none; border: 1px solid var(--linea); color: var(--grigio);
-    border-radius: 999px; padding: 6px 14px; margin-left: 6px; font: inherit; font-size: 13px; cursor: pointer; }
-  .lingua button[aria-pressed="true"] { background: var(--oro); border-color: var(--oro); color: var(--navy); font-weight: 700; }
-  .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; padding: 72px 0 56px; }
-  .etichetta { color: var(--oro); font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
-  h1 { font-size: clamp(40px, 6vw, 68px); line-height: 1.02; margin: 14px 0 18px; font-weight: 800; letter-spacing: -.02em; }
-  h1 .o { color: var(--oro); }
-  .lead { color: var(--grigio); font-size: 19px; max-width: 34em; }
-  .azioni { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn { display: inline-block; padding: 13px 24px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px; }
-  .btn-pieno { background: var(--oro); color: var(--navy); }
-  .btn-linea { border: 1px solid var(--linea); color: var(--bianco); }
-  .copertina { position: relative; }
-  .copertina img { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); }
-  .provvisorio { position: absolute; top: 16px; left: 16px; background: var(--oro); color: var(--navy);
-    font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: 7px 12px; border-radius: 6px; }
-  .stato { display: flex; gap: 10px; align-items: flex-start; background: var(--navy-2); border: 1px solid var(--linea);
-    border-radius: 10px; padding: 18px 20px; margin: 8px 0 56px; color: var(--grigio); font-size: 15px; }
-  .stato strong { color: var(--bianco); }
-  .punto { width: 9px; height: 9px; border-radius: 50%; background: var(--oro); margin-top: 8px; flex: none; }
-  h2 { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--oro); margin: 0 0 22px; font-weight: 700; }
-  section.blocco { margin: 0 0 64px; }
-  .vuoto { background: var(--navy-2); border: 1px dashed var(--linea); border-radius: 10px; padding: 28px 24px; color: var(--grigio); }
-  .vuoto p { margin: 0; }
-  .suggerimenti p { color: var(--grigio); max-width: 40em; margin: 0 0 22px; }
-  .direttore { background: var(--navy-2); border: 1px solid var(--linea); border-radius: 10px; padding: 20px 24px; color: var(--grigio); }
-  .direttore strong { color: var(--bianco); }
-  .direttore p { margin: 0 0 6px; }
-  .direttore p:last-child { margin-bottom: 0; }
-  .iscriviti { border-top: 1px solid var(--linea); padding: 56px 0; text-align: center; }
-  .iscriviti p { color: var(--grigio); max-width: 36em; margin: 0 auto 26px; }
-  footer { border-top: 1px solid var(--linea); padding: 28px 0 40px; color: var(--grigio); font-size: 14px; }
-  footer nav { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 14px; }
-  footer a { color: var(--grigio); }
-  [hidden] { display: none !important; }
-  @media (max-width: 800px) {
-    .hero { grid-template-columns: 1fr; padding-top: 44px; }
-    .copertina { order: -1; max-width: 360px; }
-  }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  .consiglio { list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
-  .consiglio li { background: var(--navy-2); border: 1px solid var(--linea); border-radius: 10px; padding: 14px 16px; }
-  .consiglio strong { display: block; font-size: 16px; }
-  .consiglio span { display: block; color: var(--grigio); font-size: 14px; margin-top: 2px; }
-</style>
+<link rel="stylesheet" href="stile.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
+<a class="salta" href="#contenuto"><span lang="it">Vai al contenuto</span><span lang="en">Skip to content</span></a>
+<div class="avanza" aria-hidden="true"><i id="avanza"></i></div>
 
-<div class="wrap">
-  <header class="top">
-    <a class="marchio" href="/">Humanoide</a>
-    <div class="lingua" role="group" aria-label="Lingua / Language">
-      <button type="button" data-lingua="it" aria-pressed="true" lang="it">Italiano</button>
-      <button type="button" data-lingua="en" aria-pressed="false" lang="en">English</button>
-    </div>
-  </header>
-
-  <!-- ITALIANO -->
-  <div lang="it" data-blocco="it">
-    <section class="hero">
-      <div>
-        <div class="etichetta">Trimestrale di cultura, innovazione e società</div>
-        <h1>Idee.<br><span class="o">Persone.</span><br>Futuro.</h1>
-        <p class="lead">Humanoide è la rivista di AssoUmanoidi: storie, idee e progetti per capire oggi e costruire il futuro. Quattro numeri l'anno su tecnologia, società, scienza e filosofia della convivenza tra esseri umani e umanoidi.</p>
-        <div class="azioni">
-          <a class="btn btn-pieno" href="https://assoumanoidi.it/#aderisci">Iscriviti per riceverla</a>
-          <a class="btn btn-linea" href="#articoli">Gli articoli</a>
-        </div>
-      </div>
-      <figure class="copertina" style="margin:0">
-        <img src="rivista-copertina.webp" width="1024" height="1024" alt="Copertina provvisoria di Humanoide, numero 1, gennaio–marzo 2027">
-        <span class="provvisorio">Provvisorio · lavoro in corso</span>
-      </figure>
-    </section>
-
-    <div class="stato">
-      <span class="punto" aria-hidden="true"></span>
-      <div><strong>Online First.</strong> Gli articoli escono in anteprima su questo sito, in attesa del fascicolo trimestrale, che è la versione definitiva (Version of Record). Il numero 1 esce a dicembre 2026 e copre il periodo gennaio–marzo 2027.</div>
-    </div>
-
-    <section id="articoli" class="blocco">
-      <h2>Articoli</h2>
-      <div class="vuoto"><p>Gli articoli saranno pubblicati qui in anteprima Online First, prima del fascicolo trimestrale.</p></div>
-    </section>
-
-    <section id="suggerimenti" class="blocco suggerimenti">
-      <h2>Suggerimenti e proposte</h2>
-      <p>Hai una storia, una ricerca o un'idea da proporre alla rivista? Leggi le norme per gli autori e inviaci la tua proposta.</p>
-      <a class="btn btn-linea" href="https://assoumanoidi.it/rivista/norme-per-autori">Norme per gli autori</a>
-    </section>
-
-    <section id="direzione" class="blocco">
-      <h2>Direzione</h2>
-      <div class="direttore">
-        <p><strong>Direttore editoriale:</strong> Massimo Morgante</p>
-        <p><strong>Direttore responsabile:</strong> Marco Marsili</p>
-        <p><strong>Direttore scientifico:</strong> Marco Marsili</p>
-        <p><strong>Vicedirettore vicario:</strong> Fabio Morotti</p>
-        <p><strong>Vicedirettore responsabile comunicazione e progetti speciali:</strong> Gabriele Gobbo</p>
-      </div>
-    </section>
-
-    <section id="consiglio-scientifico" class="blocco">
-      <h2>Consiglio scientifico</h2>
-      <p>Presieduto dal Direttore scientifico, raccoglie studiosi di etica, diritto, robotica e scienze sociali che accompagnano la rivista.</p>
-      <ul class="consiglio">
-        <li><strong>Marco Marsili</strong><span>Direttore scientifico · CEI-Iscte, Lisbona</span></li>
-        <li><strong>Carla Petrocelli</strong><span>Università di Bari Aldo Moro · Storia della scienza e delle tecniche</span></li>
-        <li><strong>Dorota Domalewska</strong><span>War Studies University, Varsavia · Scuola di dottorato</span></li>
-        <li><strong>István Polgár</strong><span>Università di Oradea, Romania · Relazioni internazionali e studi europei</span></li>
-        <li><strong>Jesús Ignacio Delgado Rojas</strong><span>Università di Siviglia · Filosofia del diritto</span></li>
-        <li><strong>Małgorzata Kamola-Cieślik</strong><span>Università di Szczecin · Sistemi politici e politiche pubbliche</span></li>
-        <li><strong>Marek Górka</strong><span>Koszalin University of Technology · Facoltà di Scienze umanistiche</span></li>
-        <li><strong>Özgür Tüfekçi</strong><span>Karadeniz Technical University, Trebisonda · Relazioni internazionali</span></li>
-        <li><strong>Rahman Dağ</strong><span>Marmara University · Scienze politiche e relazioni internazionali</span></li>
-        <li><strong>Rashed Daher</strong><span>Centro per il mondo arabo contemporaneo, ELTE, Budapest</span></li>
-      </ul>
-    </section>
-
-    <section class="iscriviti">
-      <h2>Il futuro della convivenza si legge insieme</h2>
-      <p>La rivista è un progetto di AssoUmanoidi. Iscrivendoti all'associazione ricevi il numero trimestrale e le novità sulla rivista.</p>
-      <a class="btn btn-pieno" href="https://assoumanoidi.it/#aderisci">Iscriviti per riceverla</a>
-    </section>
-  </div>
-
-  <!-- ENGLISH -->
-  <div lang="en" data-blocco="en" hidden>
-    <section class="hero">
-      <div>
-        <div class="etichetta">Quarterly of culture, innovation and society</div>
-        <h1>Ideas.<br><span class="o">People.</span><br>Future.</h1>
-        <p class="lead">Humanoide is the magazine of AssoUmanoidi: stories, ideas and projects to understand today and build the future. Four issues a year on technology, society, science and the philosophy of coexistence between humans and humanoids.</p>
-        <div class="azioni">
-          <a class="btn btn-pieno" href="https://assoumanoidi.it/en/#aderisci">Subscribe to receive it</a>
-          <a class="btn btn-linea" href="#articoli-en">Articles</a>
-        </div>
-      </div>
-      <figure class="copertina" style="margin:0">
-        <img src="rivista-copertina.webp" width="1024" height="1024" alt="Provisional cover of Humanoide, issue 1, January–March 2027">
-        <span class="provvisorio">Provisional · work in progress</span>
-      </figure>
-    </section>
-
-    <div class="stato">
-      <span class="punto" aria-hidden="true"></span>
-      <div><strong>Online First.</strong> Articles appear in preview on this site, ahead of the quarterly issue, which is the definitive edition (Version of Record). Issue 1 comes out in December 2026 and covers January–March 2027.</div>
-    </div>
-
-    <section id="articoli-en" class="blocco">
-      <h2>Articles</h2>
-      <div class="vuoto"><p>Articles will be published here in Online First preview, ahead of the quarterly issue.</p></div>
-    </section>
-
-    <section id="suggerimenti-en" class="blocco suggerimenti">
-      <h2>Suggestions and proposals</h2>
-      <p>Do you have a story, a piece of research or an idea to propose to the magazine? Read the author guidelines and send us your proposal.</p>
-      <a class="btn btn-linea" href="https://assoumanoidi.it/en/journal/author-guidelines">Author guidelines</a>
-    </section>
-
-    <section id="direzione-en" class="blocco">
-      <h2>Editorial board</h2>
-      <div class="direttore">
-        <p><strong>Editorial Director:</strong> Massimo Morgante</p>
-        <p><strong>Editor-in-Chief:</strong> Marco Marsili</p>
-        <p><strong>Scientific Director:</strong> Marco Marsili</p>
-        <p><strong>Deputy Editor-in-Chief:</strong> Fabio Morotti</p>
-        <p><strong>Deputy Editor for Communications and Special Projects:</strong> Gabriele Gobbo</p>
-      </div>
-    </section>
-
-    <section id="consiglio-scientifico-en" class="blocco">
-      <h2>Scientific Council</h2>
-      <p>Chaired by the Scientific Director, it brings together scholars of ethics, law, robotics and the social sciences who support the journal.</p>
-      <ul class="consiglio">
-        <li><strong>Marco Marsili</strong><span>Scientific Director · CEI-Iscte, Lisbon</span></li>
-        <li><strong>Carla Petrocelli</strong><span>University of Bari Aldo Moro · History of Science and Techniques</span></li>
-        <li><strong>Dorota Domalewska</strong><span>War Studies University, Warsaw · Doctoral School</span></li>
-        <li><strong>István Polgár</strong><span>University of Oradea, Romania · International Relations and European Studies</span></li>
-        <li><strong>Jesús Ignacio Delgado Rojas</strong><span>University of Seville · Philosophy of Law</span></li>
-        <li><strong>Małgorzata Kamola-Cieślik</strong><span>University of Szczecin · Political Systems and Public Policy</span></li>
-        <li><strong>Marek Górka</strong><span>Koszalin University of Technology · Faculty of Humanities</span></li>
-        <li><strong>Özgür Tüfekçi</strong><span>Karadeniz Technical University, Trabzon · International Relations</span></li>
-        <li><strong>Rahman Dağ</strong><span>Marmara University · Political Science and International Relations</span></li>
-        <li><strong>Rashed Daher</strong><span>Center for the Contemporary Arab World, ELTE, Budapest</span></li>
-      </ul>
-    </section>
-
-    <section class="iscriviti">
-      <h2>The future of coexistence is read together</h2>
-      <p>The magazine is a project of AssoUmanoidi. By joining the association you receive the quarterly issue and news about the journal.</p>
-      <a class="btn btn-pieno" href="https://assoumanoidi.it/en/#aderisci">Subscribe to receive it</a>
-    </section>
-  </div>
-
-  <footer>
-    <nav>
-      <a href="colophon.html">Colophon</a>
-      <a href="https://assoumanoidi.it/rivista/norme-per-autori">Norme per gli autori</a>
-      <a href="colophon.html">Colophon (EN)</a>
-      <a href="https://assoumanoidi.it/en/journal/author-guidelines">Author guidelines (EN)</a>
-      <a href="https://assoumanoidi.it">AssoUmanoidi</a>
+<header class="testa" id="testa">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Humanoide"><img src="humanoide-testata.webp" width="720" height="101" alt="Humanoide"></a>
+    <nav class="nav" aria-label="Sezioni / Sections">
+      <a href="#come"><span lang="it">Come si legge</span><span lang="en">How to read</span></a>
+      <a href="#articoli"><span lang="it">Articoli</span><span lang="en">Articles</span></a>
+      <a href="#direzione"><span lang="it">Direzione</span><span lang="en">Editorial board</span></a>
+      <a href="#consiglio"><span lang="it">Consiglio scientifico</span><span lang="en">Scientific Council</span></a>
+      <a href="#scrivi"><span lang="it">Scrivi per noi</span><span lang="en">Write for us</span></a>
     </nav>
-    <div>© AssoUmanoidi – Associazione per i diritti degli umanoidi. Humanoide è edita da AssoUmanoidi.</div>
-  </footer>
-</div>
+    <div class="destra">
+      <div class="lingua" role="group" aria-label="Lingua / Language">
+        <button type="button" data-lingua="it" aria-pressed="true" aria-label="IT – Italiano">IT</button>
+        <button type="button" data-lingua="en" aria-pressed="false" aria-label="EN – English">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
 
-<script>
-  // lingua: si ricorda la scelta; senza JavaScript resta l'italiano
-  (function () {
-    var bottoni = document.querySelectorAll('[data-lingua]');
-    var blocchi = document.querySelectorAll('[data-blocco]');
-    function mostra(l) {
-      blocchi.forEach(function (b) { b.hidden = b.getAttribute('data-blocco') !== l; });
-      bottoni.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lingua') === l)); });
-      document.documentElement.lang = l;
-      try { localStorage.setItem('humanoide-lingua', l); } catch (e) {}
-    }
-    bottoni.forEach(function (b) { b.addEventListener('click', function () { mostra(b.getAttribute('data-lingua')); }); });
-    var salvata = null;
-    try { salvata = localStorage.getItem('humanoide-lingua'); } catch (e) {}
-    if (salvata === 'en') mostra('en');
-  })();
-</script>
+<main id="contenuto">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="titolo">
+    <canvas class="rete" id="rete" aria-hidden="true"></canvas>
+    <div class="filigrana" aria-hidden="true">N.01</div>
+    <div class="wrap">
+      <div>
+        <p class="occhiello rv"><span lang="it">Trimestrale di cultura, innovazione e società</span><span lang="en">Quarterly of culture, innovation and society</span></p>
+        <h1 id="titolo" class="rv" style="--d:.08s">
+          <span lang="it">Idee.<br><em>Persone.</em><br>Futuro.</span>
+          <span lang="en">Ideas.<br><em>People.</em><br>Future.</span>
+        </h1>
+        <p class="lead rv" style="--d:.16s">
+          <span lang="it">Humanoide è la rivista di AssoUmanoidi: storie, idee e progetti per capire oggi e costruire il futuro. Quattro numeri l'anno su tecnologia, società, scienza e filosofia della convivenza tra esseri umani e umanoidi.</span>
+          <span lang="en">Humanoide is the magazine of AssoUmanoidi: stories, ideas and projects to understand today and build the future. Four issues a year on technology, society, science and the philosophy of coexistence between humans and humanoids.</span>
+        </p>
+        <div class="azioni rv" style="--d:.24s">
+          <a class="btn btn-oro" href="https://assoumanoidi.it/#aderisci" data-it="https://assoumanoidi.it/#aderisci" data-en="https://assoumanoidi.it/en#aderisci">
+            <span lang="it">Iscriviti per riceverla</span><span lang="en">Subscribe to receive it</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-linea" href="#come"><span lang="it">Come si legge</span><span lang="en">How to read it</span></a>
+        </div>
+        <ul class="chip rv" style="--d:.32s">
+          <li><strong>N.01</strong> · <span lang="it">gennaio–marzo 2027</span><span lang="en">January–March 2027</span></li>
+          <li><span lang="it">In uscita a <strong>dicembre 2026</strong></span><span lang="en">Out in <strong>December 2026</strong></span></li>
+          <li><strong>Online First</strong></li>
+        </ul>
+      </div>
+      <figure class="cop rv" style="--d:.12s; margin:0" id="cop">
+        <div class="cop-in" id="copin">
+          <img src="rivista-copertina.webp" width="1024" height="1024" fetchpriority="high"
+               alt="Copertina provvisoria di Humanoide, numero 1, gennaio–marzo 2027: il volto di una donna accanto a un volto robotico">
+        </div>
+        <figcaption><span lang="it">Copertina provvisoria · lavoro in corso</span><span lang="en">Provisional cover · work in progress</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ FASCIA ============ -->
+  <div class="fascia-wrap">
+  <div class="fascia" aria-hidden="true">
+    <div class="fascia-pista">
+      <div class="fascia-gr">
+        <span lang="it">Tecnologia</span><span lang="en">Technology</span><i></i>
+        <span lang="it">Società</span><span lang="en">Society</span><i></i>
+        <span lang="it">Scienza</span><span lang="en">Science</span><i></i>
+        <span lang="it">Filosofia</span><span lang="en">Philosophy</span><i></i>
+        <span lang="it">Convivenza</span><span lang="en">Coexistence</span><i></i>
+      </div>
+      <div class="fascia-gr" aria-hidden="true">
+        <span lang="it">Tecnologia</span><span lang="en">Technology</span><i></i>
+        <span lang="it">Società</span><span lang="en">Society</span><i></i>
+        <span lang="it">Scienza</span><span lang="en">Science</span><i></i>
+        <span lang="it">Filosofia</span><span lang="en">Philosophy</span><i></i>
+        <span lang="it">Convivenza</span><span lang="en">Coexistence</span><i></i>
+      </div>
+    </div>
+  </div>
+  <div class="pausa-riga" id="pausa-riga"><div class="wrap">
+  <button type="button" class="pausa" id="pausa" aria-pressed="false">
+    <svg class="ic-pausa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+    <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg>
+    <span lang="it" class="p-it">Pausa animazioni</span><span lang="en" class="p-en">Pause animations</span>
+  </button>
+  </div></div>
+  </div>
+
+  <!-- ============ COME SI LEGGE ============ -->
+  <section class="sez carta" id="come" aria-labelledby="t-come">
+    <div class="wrap">
+      <p class="occhiello rv"><span lang="it">Il modello Online First</span><span lang="en">The Online First model</span></p>
+      <h2 id="t-come" class="rv" style="--d:.06s; margin-top:18px">
+        <span lang="it">Prima l'articolo, poi <em>il fascicolo.</em></span>
+        <span lang="en">First the article, then <em>the issue.</em></span>
+      </h2>
+      <ol class="passi">
+        <li class="rv">
+          <span class="n" aria-hidden="true">01</span>
+          <h3><span lang="it">Anteprima Online First</span><span lang="en">Online First preview</span></h3>
+          <p><span lang="it">Ogni articolo esce prima su questo sito, con la data di pubblicazione. Alcune anteprime sono ad accesso aperto, altre riservate agli abbonati.</span>
+             <span lang="en">Each article appears first on this site, with its publication date. Some previews are open access, others are reserved for subscribers.</span></p>
+        </li>
+        <li class="rv" style="--d:.1s">
+          <span class="n" aria-hidden="true">02</span>
+          <h3><span lang="it">Il fascicolo trimestrale</span><span lang="en">The quarterly issue</span></h3>
+          <p><span lang="it">Ogni tre mesi un PDF raccoglie gli articoli: è la Version of Record, l'edizione ufficiale e definitiva. Per chi legge è ad accesso libero.</span>
+             <span lang="en">Every three months a PDF gathers the articles: it is the Version of Record, the official and definitive edition. It is free for readers.</span></p>
+        </li>
+        <li class="rv" style="--d:.2s">
+          <span class="n" aria-hidden="true">03</span>
+          <h3><span lang="it">In più lingue</span><span lang="en">In several languages</span></h3>
+          <p><span lang="it">La rivista è multilingue, con traduzione automatica tramite intelligenza artificiale sulla piattaforma Speaqi. L'originale resta disponibile e prevale in caso di discrepanze.</span>
+             <span lang="en">The journal is multilingual, with automatic AI translation on the Speaqi platform. The original remains available and prevails in case of discrepancies.</span></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ ARTICOLI ============ -->
+  <section class="sez" id="articoli" aria-labelledby="t-art">
+    <div class="wrap">
+      <p class="occhiello rv"><span lang="it">Articoli</span><span lang="en">Articles</span></p>
+      <h2 id="t-art" class="rv" style="--d:.06s">
+        <span lang="it">Il primo articolo è <em>in preparazione.</em></span>
+        <span lang="en">The first article is <em>in the making.</em></span>
+      </h2>
+      <div class="arti" aria-hidden="true">
+        <div class="scheda rv"><b></b><b></b><b></b><b></b></div>
+        <div class="scheda rv" style="--d:.1s"><b></b><b></b><b></b><b></b></div>
+        <div class="scheda rv" style="--d:.2s"><b></b><b></b><b></b><b></b></div>
+      </div>
+      <div class="arti-nota rv">
+        <p class="muto">
+          <span lang="it">Gli articoli saranno pubblicati qui in anteprima Online First, prima del fascicolo trimestrale.</span>
+          <span lang="en">Articles will be published here in Online First preview, ahead of the quarterly issue.</span>
+        </p>
+        <a class="btn btn-oro" href="https://assoumanoidi.it/#aderisci" data-it="https://assoumanoidi.it/#aderisci" data-en="https://assoumanoidi.it/en#aderisci">
+          <span lang="it">Iscriviti per restare aggiornato</span><span lang="en">Subscribe to stay updated</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIREZIONE ============ -->
+  <section class="sez carta" id="direzione" aria-labelledby="t-dir">
+    <div class="wrap dir">
+      <div>
+        <p class="occhiello rv"><span lang="it">Chi fa la rivista</span><span lang="en">Who makes the journal</span></p>
+        <h2 id="t-dir" class="rv" style="--d:.06s; margin-top:18px">
+          <span lang="it"><em>Direzione</em></span>
+          <span lang="en"><em>Editorial</em> board</span>
+        </h2>
+      </div>
+      <ul class="ruoli">
+        <li class="rv"><small><span lang="it">Direttore editoriale</span><span lang="en">Editorial Director</span></small><b>Massimo Morgante</b></li>
+        <li class="rv" style="--d:.05s"><small><span lang="it">Direttore responsabile</span><span lang="en">Editor-in-Chief</span></small><b>Marco Marsili</b></li>
+        <li class="rv" style="--d:.1s"><small><span lang="it">Direttore scientifico</span><span lang="en">Scientific Director</span></small><b>Marco Marsili</b></li>
+        <li class="rv" style="--d:.15s"><small><span lang="it">Vicedirettore vicario</span><span lang="en">Deputy Editor-in-Chief</span></small><b>Fabio Morotti</b></li>
+        <li class="rv" style="--d:.2s"><small><span lang="it">Vicedirettore responsabile comunicazione e progetti speciali</span><span lang="en">Deputy Editor for Communications and Special Projects</span></small><b>Gabriele Gobbo</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CONSIGLIO SCIENTIFICO ============ -->
+  <section class="sez" id="consiglio" aria-labelledby="t-cons">
+    <div class="wrap">
+      <p class="occhiello rv"><span lang="it">Consiglio scientifico</span><span lang="en">Scientific Council</span></p>
+      <h2 id="t-cons" class="rv" style="--d:.06s">
+        <span lang="it">Studiosi di etica, diritto, <em>robotica</em> e scienze sociali.</span>
+        <span lang="en">Scholars of ethics, law, <em>robotics</em> and the social sciences.</span>
+      </h2>
+      <p class="intro-sez muto rv" style="--d:.1s">
+        <span lang="it">Presieduto dal Direttore scientifico, il Consiglio scientifico accompagna la rivista.</span>
+        <span lang="en">Chaired by the Scientific Director, the Scientific Council supports the journal.</span>
+      </p>
+      <ul class="griglia">
+        <li class="persona dr rv"><span class="ini" aria-hidden="true">MM</span><div>
+          <span class="ruolo"><span lang="it">Direttore scientifico</span><span lang="en">Scientific Director</span></span>
+          <h3>Marco Marsili</h3>
+          <p><span lang="it">CEI-Iscte, Lisbona</span><span lang="en">CEI-Iscte, Lisbon</span></p></div></li>
+        <li class="persona rv"><span class="ini" aria-hidden="true">CP</span><div><h3>Carla Petrocelli</h3>
+          <p><span lang="it">Università di Bari Aldo Moro · Storia della scienza e delle tecniche</span><span lang="en">University of Bari Aldo Moro · History of Science and Techniques</span></p></div></li>
+        <li class="persona rv" style="--d:.05s"><span class="ini" aria-hidden="true">DD</span><div><h3>Dorota Domalewska</h3>
+          <p><span lang="it">War Studies University, Varsavia · Scuola di dottorato</span><span lang="en">War Studies University, Warsaw · Doctoral School</span></p></div></li>
+        <li class="persona rv" style="--d:.1s"><span class="ini" aria-hidden="true">IP</span><div><h3>István Polgár</h3>
+          <p><span lang="it">Università di Oradea, Romania · Relazioni internazionali e studi europei</span><span lang="en">University of Oradea, Romania · International Relations and European Studies</span></p></div></li>
+        <li class="persona rv"><span class="ini" aria-hidden="true">JR</span><div><h3>Jesús Ignacio Delgado Rojas</h3>
+          <p><span lang="it">Università di Siviglia · Filosofia del diritto</span><span lang="en">University of Seville · Philosophy of Law</span></p></div></li>
+        <li class="persona rv" style="--d:.05s"><span class="ini" aria-hidden="true">MK</span><div><h3>Małgorzata Kamola-Cieślik</h3>
+          <p><span lang="it">Università di Szczecin · Sistemi politici e politiche pubbliche</span><span lang="en">University of Szczecin · Political Systems and Public Policy</span></p></div></li>
+        <li class="persona rv" style="--d:.1s"><span class="ini" aria-hidden="true">MG</span><div><h3>Marek Górka</h3>
+          <p><span lang="it">Koszalin University of Technology · Facoltà di Scienze umanistiche</span><span lang="en">Koszalin University of Technology · Faculty of Humanities</span></p></div></li>
+        <li class="persona rv"><span class="ini" aria-hidden="true">ÖT</span><div><h3>Özgür Tüfekçi</h3>
+          <p><span lang="it">Karadeniz Technical University, Trebisonda · Relazioni internazionali</span><span lang="en">Karadeniz Technical University, Trabzon · International Relations</span></p></div></li>
+        <li class="persona rv" style="--d:.05s"><span class="ini" aria-hidden="true">RD</span><div><h3>Rahman Dağ</h3>
+          <p><span lang="it">Marmara University · Scienze politiche e relazioni internazionali</span><span lang="en">Marmara University · Political Science and International Relations</span></p></div></li>
+        <li class="persona rv" style="--d:.1s"><span class="ini" aria-hidden="true">RD</span><div><h3>Rashed Daher</h3>
+          <p><span lang="it">Centro per il mondo arabo contemporaneo, ELTE, Budapest</span><span lang="en">Center for the Contemporary Arab World, ELTE, Budapest</span></p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SCRIVI ============ -->
+  <section class="sez carta scrivi" id="scrivi" aria-labelledby="t-scr">
+    <div class="wrap">
+      <div>
+        <p class="occhiello rv"><span lang="it">Suggerimenti e proposte</span><span lang="en">Suggestions and proposals</span></p>
+        <h2 id="t-scr" class="rv" style="--d:.06s; margin-top:18px">
+          <span lang="it">Scrivi per <em>Humanoide.</em></span>
+          <span lang="en">Write for <em>Humanoide.</em></span>
+        </h2>
+        <p class="muto rv" style="--d:.1s">
+          <span lang="it">Hai una storia, una ricerca o un'idea da proporre alla rivista? Leggi le norme per gli autori e inviaci la tua proposta.</span>
+          <span lang="en">Do you have a story, a piece of research or an idea to propose to the magazine? Read the author guidelines and send us your proposal.</span>
+        </p>
+      </div>
+      <a class="btn btn-navy rv" style="--d:.14s" href="https://assoumanoidi.it/rivista/norme-per-autori" data-it="https://assoumanoidi.it/rivista/norme-per-autori" data-en="https://assoumanoidi.it/en/journal/author-guidelines">
+        <span lang="it">Norme per gli autori</span><span lang="en">Author guidelines</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ ISCRIZIONE ============ -->
+  <section class="sez iscr" aria-labelledby="t-iscr">
+    <div class="wrap">
+      <p class="occhiello rv"><span lang="it">AssoUmanoidi</span><span lang="en">AssoUmanoidi</span></p>
+      <h2 id="t-iscr" class="rv" style="--d:.06s; margin-top:18px">
+        <span lang="it">Il futuro della convivenza <em>si legge insieme.</em></span>
+        <span lang="en">The future of coexistence <em>is read together.</em></span>
+      </h2>
+      <p class="muto rv" style="--d:.1s">
+        <span lang="it">La rivista è un progetto di AssoUmanoidi. Iscrivendoti all'associazione ricevi il numero trimestrale e le novità sulla rivista.</span>
+        <span lang="en">The magazine is a project of AssoUmanoidi. By joining the association you receive the quarterly issue and news about the journal.</span>
+      </p>
+      <div class="azioni rv" style="--d:.16s">
+        <a class="btn btn-oro" href="https://assoumanoidi.it/#aderisci" data-it="https://assoumanoidi.it/#aderisci" data-en="https://assoumanoidi.it/en#aderisci">
+          <span lang="it">Iscriviti per riceverla</span><span lang="en">Subscribe to receive it</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <p class="piccolo muto rv" style="--d:.2s"><span lang="it">Si apre il modulo di iscrizione all'associazione, sul sito di AssoUmanoidi.</span><span lang="en">This opens the association's membership form on the AssoUmanoidi website.</span></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Humanoide"><img src="humanoide-testata.webp" width="720" height="101" alt="Humanoide"></a>
+    <nav aria-label="Link / Links">
+      <a href="colophon.html">Colophon</a>
+      <a href="https://assoumanoidi.it/rivista/norme-per-autori" data-it="https://assoumanoidi.it/rivista/norme-per-autori" data-en="https://assoumanoidi.it/en/journal/author-guidelines"><span lang="it">Norme per gli autori</span><span lang="en">Author guidelines</span></a>
+      <a href="https://assoumanoidi.it" data-it="https://assoumanoidi.it" data-en="https://assoumanoidi.it/en">AssoUmanoidi</a>
+    </nav>
+    <p style="margin:0"><span lang="it">© AssoUmanoidi – Associazione per i diritti degli umanoidi. Humanoide è edita da AssoUmanoidi.</span><span lang="en">© AssoUmanoidi – Association for Humanoid Rights. Humanoide is published by AssoUmanoidi.</span></p>
+  </div>
+</footer>
+
+<script src="app.js" defer></script>
 </body>
 </html>
