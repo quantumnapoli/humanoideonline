@@ -24,6 +24,8 @@
   function aggiorna() {
     var y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
     testa.classList.toggle('sc', y > 24);
+    // in cima alla pagina nessuna voce di menu è «attiva»
+    if (y < 160) document.querySelectorAll('.nav a[aria-current]').forEach(function (n) { n.removeAttribute('aria-current'); });
     barra.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
     tick = false;
   }
