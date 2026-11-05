@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Humanoide — la rivista di AssoUmanoidi</title>
+<meta name="description" content="Humanoide è la rivista di AssoUmanoidi: trimestrale di cultura, innovazione e società sulla convivenza tra esseri umani e umanoidi. Online First, numero 1 in uscita a dicembre 2026.">
+<link rel="canonical" href="https://humanoideonline.com/">
+<meta property="og:title" content="Humanoide — idee, persone, futuro">
+<meta property="og:description" content="La rivista di AssoUmanoidi sulla convivenza tra esseri umani e umanoidi.">
+<meta property="og:image" content="https://humanoideonline.com/rivista-copertina.webp">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b1d3a">
+<style>
+  :root {
+    --navy: #0b1d3a; --navy-d: #07142a; --navy-2: #13294f;
+    --oro: #d4a843; --oro-s: #7a5a08;
+    --carta: #f3eee4; --carta-2: #e9e2d3;
+    --bianco: #f6f4ee; --muto: #b6bfd2; --muto-c: #4a5470;
+    --linea: rgba(246,244,238,.16); --linea-c: rgba(11,29,58,.18);
+    --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --ease: cubic-bezier(.2,.7,.2,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  body { margin: 0; background: var(--navy); color: var(--bianco); font: 400 17px/1.65 var(--sans);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+  .wrap { width: min(1120px, 100% - 40px); margin: 0 auto; }
+  :focus-visible { outline: 3px solid var(--oro); outline-offset: 3px; border-radius: 4px; }
+  .carta :focus-visible { outline-color: var(--navy); }
+
+  /* lingua: due testi affiancati, se ne vede uno */
+  html[lang="it"] [lang="en"], html[lang="en"] [lang="it"] { display: none !important; }
+
+  .salta { position: absolute; left: 12px; top: -60px; background: var(--oro); color: var(--navy); padding: 10px 16px;
+    border-radius: 8px; font-weight: 700; z-index: 100; text-decoration: none; transition: top .2s; }
+  .salta:focus { top: 12px; }
+
+  /* barra di avanzamento */
+  .avanza { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 60; background: transparent; pointer-events: none; }
+  .avanza i { display: block; height: 100%; width: 100%; background: var(--oro); transform-origin: 0 50%; transform: scaleX(0); }
+
+  /* intestazione */
+  .testa { position: sticky; top: 0; z-index: 50; transition: background .3s, border-color .3s, backdrop-filter .3s;
+    border-bottom: 1px solid transparent; }
+  .testa.sc { background: rgba(7,20,42,.78); -webkit-backdrop-filter: blur(14px) saturate(1.3); backdrop-filter: blur(14px) saturate(1.3);
+    border-bottom-color: var(--linea); }
+  .testa .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; }
+  .logo { display: inline-flex; align-items: center; min-height: 44px; }
+  .logo img { width: 150px; }
+  .nav { display: flex; gap: 2px; }
+  .nav a { padding: 10px 12px; border-radius: 999px; font-size: 14px; white-space: nowrap; text-decoration: none; color: var(--muto);
+    transition: color .2s, background .2s; }
+  .nav a:hover { color: var(--bianco); background: rgba(246,244,238,.07); }
+  .nav a[aria-current="true"] { color: var(--navy); background: var(--oro); font-weight: 700; }
+  .destra { display: flex; align-items: center; gap: 10px; }
+  .lingua { display: inline-flex; padding: 2px; border: 1px solid var(--linea); border-radius: 999px; }
+  .lingua button { font: inherit; font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--muto); background: none;
+    border: 0; border-radius: 999px; min-width: 44px; min-height: 44px; padding: 0 12px; cursor: pointer; transition: background .2s, color .2s; }
+  .lingua button[aria-pressed="true"] { background: var(--oro); color: var(--navy); }
+
+  /* bottoni */
+  .btn { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 28px; border-radius: 999px; border: 1px solid transparent;
+    font: 700 15px/1 var(--sans); text-decoration: none; cursor: pointer; transition: transform .25s var(--ease), background .2s, border-color .2s, color .2s; }
+  .btn svg { width: 18px; height: 18px; transition: transform .25s var(--ease); }
+  .btn:hover svg { transform: translateX(4px); }
+  .btn-oro { background: var(--oro); color: var(--navy); }
+  .btn-oro:hover { background: #e3bb55; transform: translateY(-2px); }
+  .btn-linea { border-color: var(--linea); color: var(--bianco); }
+  .btn-linea:hover { border-color: var(--bianco); background: rgba(246,244,238,.06); }
+  .carta .btn-linea { border-color: var(--linea-c); color: var(--navy); }
+  .carta .btn-linea:hover { border-color: var(--navy); background: rgba(11,29,58,.05); }
+  .btn-navy { background: var(--navy); color: var(--bianco); }
+  .btn-navy:hover { background: var(--navy-2); transform: translateY(-2px); }
+
+  /* tipografia */
+  .occhiello { font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--oro); display: inline-flex; align-items: center; gap: 12px; }
+  .occhiello::before { content: ""; width: 32px; height: 1px; background: currentColor; }
+  .carta .occhiello { color: var(--oro-s); }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -.02em; margin: 0; }
+  h2 { font-size: clamp(34px, 5vw, 58px); line-height: 1.04; }
+  h2 em, h1 em { font-style: italic; color: var(--oro); font-weight: 500; }
+  .carta h2 em { color: var(--oro-s); }
+  .sez { padding: clamp(72px, 10vw, 128px) 0; }
+  .carta { background: var(--carta); color: var(--navy); }
+  .carta .muto { color: var(--muto-c); }
+  .muto { color: var(--muto); }
+  .intro-sez { max-width: 38em; margin: 22px 0 0; font-size: 19px; }
+
+  /* hero */
+  .hero { position: relative; overflow: hidden; padding: clamp(28px, 4.5vw, 64px) 0 clamp(56px, 8vw, 104px);
+    background: radial-gradient(1200px 600px at 78% 8%, rgba(212,168,67,.16), transparent 60%),
+                radial-gradient(900px 500px at 0% 100%, rgba(19,41,79,.9), transparent 60%), var(--navy); }
+  .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background-image: radial-gradient(rgba(246,244,238,.07) 1px, transparent 1px); background-size: 28px 28px;
+    -webkit-mask-image: linear-gradient(180deg, #000, transparent 75%); mask-image: linear-gradient(180deg, #000, transparent 75%); }
+  .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
+  .hero h1 { font-size: clamp(52px, min(8.2vw, 13.5vh), 124px); line-height: .93; letter-spacing: -.045em; margin: 20px 0 22px; }
+  .hero h1 span { display: block; }
+  .lead { font-size: clamp(17px, 1.45vw, 20px); color: var(--muto); max-width: 36em; margin: 0; }
+  .azioni { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .chip { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 0; padding: 0; list-style: none; }
+  .chip li { font-size: 13px; padding: 8px 14px; border: 1px solid var(--linea); border-radius: 999px; color: var(--muto); }
+  .chip strong { color: var(--bianco); font-weight: 700; }
+  .cop { position: relative; perspective: 1100px; max-width: min(440px, 52vh); margin-inline: auto; width: 100%; }
+  .cop::before { content: ""; position: absolute; inset: 8% -8% -6%; background: radial-gradient(closest-side, rgba(212,168,67,.45), transparent 72%);
+    filter: blur(24px); z-index: 0; }
+  .cop-in { position: relative; z-index: 1; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .5s var(--ease); transform-style: preserve-3d; }
+  .cop-in.muove { transition: transform .08s linear; }
+  .cop img { border-radius: 6px; box-shadow: 0 50px 80px -30px rgba(0,0,0,.75), 0 0 0 1px rgba(246,244,238,.08); }
+  .cop figcaption { margin: 18px 0 0; text-align: center; font-size: 13px; color: var(--muto); display: flex; justify-content: center; align-items: center; gap: 10px; }
+  .cop figcaption::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--oro); box-shadow: 0 0 0 4px rgba(212,168,67,.22); }
+
+  /* fascia scorrevole */
+  .fascia-wrap { position: relative; }
+  .pausa-riga { background: var(--navy-d); border-bottom: 1px solid var(--linea); }
+  .pausa-riga .wrap { display: flex; justify-content: flex-end; padding: 4px 0 6px; }
+  .pausa { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; font: 700 13px/1 var(--sans); color: var(--muto); background: none; border: 1px solid transparent; border-radius: 999px; cursor: pointer; transition: color .2s, border-color .2s; }
+  .pausa:hover { color: var(--bianco); border-color: var(--linea); }
+  .pausa[hidden], .pausa-riga[hidden] { display: none; }
+  .pausa svg { width: 14px; height: 14px; }
+  .pausa .ic-play { display: none; }
+  html.ferma .pausa .ic-play { display: block; } html.ferma .pausa .ic-pausa { display: none; }
+  html.ferma .fascia-pista, html.ferma .scheda b { animation-play-state: paused; }
+  .fascia { background: var(--navy-d); border-block: 1px solid var(--linea); overflow: hidden; padding: 22px 0; }
+  .fascia-pista { display: flex; width: max-content; animation: scorri 42s linear infinite; }
+  .fascia:hover .fascia-pista { animation-play-state: paused; }
+  .fascia-gr { display: flex; align-items: center; gap: 44px; padding-right: 44px; flex: none; }
+  .fascia span { font: italic 500 clamp(26px, 3.4vw, 40px)/1 var(--serif); color: var(--bianco); white-space: nowrap; }
+  .fascia i { width: 10px; height: 10px; border-radius: 50%; background: var(--oro); flex: none; }
+  @keyframes scorri { to { transform: translateX(-50%); } }
+
+  /* come si legge */
+  .passi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 64px 0 0; padding: 0; list-style: none; counter-reset: p; }
+  .passi li { position: relative; padding: 0 32px 0 0; }
+  .passi li + li { padding-left: 32px; border-left: 1px solid var(--linea-c); }
+  .passi .n { font: 500 72px/1 var(--serif); color: var(--oro-s); opacity: .85; display: block; margin-bottom: 18px; }
+  .passi h3 { font-size: 26px; line-height: 1.15; margin-bottom: 12px; }
+  .passi p { margin: 0; color: var(--muto-c); }
+
+  /* articoli: stato vuoto che promette */
+  .arti { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+  .scheda { border: 1px solid var(--linea); border-radius: 16px; padding: 28px; background: linear-gradient(180deg, rgba(19,41,79,.55), rgba(19,41,79,.2)); min-height: 240px;
+    display: flex; flex-direction: column; justify-content: flex-end; gap: 12px; }
+  .scheda b { display: block; height: 12px; border-radius: 6px; background: linear-gradient(90deg, rgba(246,244,238,.08), rgba(246,244,238,.22), rgba(246,244,238,.08));
+    background-size: 220% 100%; animation: luccica 2.6s ease-in-out infinite; }
+  .scheda b:nth-child(1) { width: 34%; height: 9px; background-color: transparent; }
+  .scheda b:nth-child(2) { width: 92%; height: 18px; }
+  .scheda b:nth-child(3) { width: 74%; height: 18px; }
+  .scheda b:nth-child(4) { width: 52%; }
+  @keyframes luccica { 0% { background-position: 120% 0; } 100% { background-position: -120% 0; } }
+  .arti-nota { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; }
+  .arti-nota p { margin: 0; max-width: 36em; }
+
+  /* direzione */
+  .dir { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .dir > div:first-child { position: sticky; top: 120px; }
+  .ruoli { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--linea-c); }
+  .ruoli li { display: grid; grid-template-columns: 1fr; gap: 2px; padding: 22px 0; border-bottom: 1px solid var(--linea-c); }
+  .ruoli small { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--oro-s); }
+  .ruoli b { font: 500 clamp(26px, 3.2vw, 38px)/1.1 var(--serif); letter-spacing: -.015em; }
+  .ruoli li:first-child b { font-size: clamp(32px, 4.2vw, 50px); }
+
+  /* consiglio */
+  .griglia { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 56px 0 0; padding: 0; list-style: none; }
+  .persona { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; padding: 24px; border: 1px solid var(--linea); border-radius: 16px;
+    background: rgba(19,41,79,.32); transition: transform .3s var(--ease), border-color .3s, background .3s; }
+  .persona:hover { transform: translateY(-4px); border-color: rgba(212,168,67,.6); background: rgba(19,41,79,.6); }
+  .ini { flex: none; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(212,168,67,.7);
+    font: 600 17px/1 var(--serif); color: var(--oro); letter-spacing: .02em; }
+  .persona h3 { font-size: 21px; line-height: 1.2; margin-bottom: 6px; }
+  .persona p { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--muto); }
+  .persona.dr { grid-column: 1 / -1; flex-direction: row; gap: 18px; background: linear-gradient(100deg, rgba(212,168,67,.18), rgba(19,41,79,.32) 60%); border-color: rgba(212,168,67,.5); align-items: center; }
+  .persona.dr .ini { width: 68px; height: 68px; font-size: 22px; background: var(--oro); color: var(--navy); border-color: var(--oro); }
+  .persona.dr h3 { font-size: clamp(24px, 3vw, 32px); }
+  .persona.dr .ruolo { display: block; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--oro); margin-bottom: 4px; }
+
+  /* scrivi */
+  .scrivi .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px 56px; }
+  .scrivi h2 { max-width: 14em; }
+  .scrivi p { max-width: 34em; margin: 18px 0 0; }
+
+  /* iscrizione */
+  .iscr { position: relative; text-align: center; overflow: hidden;
+    background: radial-gradient(900px 420px at 50% 0%, rgba(212,168,67,.22), transparent 70%), var(--navy-d); }
+  .iscr h2 { max-width: 14em; margin-inline: auto; }
+  .iscr p { max-width: 34em; margin: 22px auto 0; }
+  .iscr .azioni { justify-content: center; }
+  .piccolo { font-size: 13.5px; }
+
+  footer { background: var(--navy-d); border-top: 1px solid var(--linea); padding: 56px 0 44px; color: var(--muto); font-size: 14px; }
+  footer .wrap { display: grid; gap: 36px; }
+  footer .logo img { width: 240px; opacity: .95; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+  footer nav a { color: var(--bianco); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; border-bottom: 1px solid transparent; }
+  footer nav a:hover { border-bottom-color: var(--oro); }
+
+  /* comparsa allo scorrimento: solo se c'è JavaScript */
+  .js .rv { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+  .js .rv.in { opacity: 1; transform: none; }
+
+  @media (max-width: 980px) {
+    .nav { display: none; }
+    .hero .wrap { grid-template-columns: 1fr; }
+    .cop { max-width: 360px; order: -1; }
+    .dir { grid-template-columns: 1fr; }
+    .dir > div:first-child { position: static; }
+    .griglia { grid-template-columns: repeat(2, 1fr); }
+    .arti { grid-template-columns: 1fr; }
+    .scheda { min-height: 170px; }
+  }
+  @media (max-width: 720px) {
+    .passi { grid-template-columns: 1fr; gap: 44px; }
+    .passi li, .passi li + li { padding: 0; border: 0; }
+    .griglia { grid-template-columns: 1fr; }
+    .persona { flex-direction: row; gap: 18px; }
+    .persona.dr { align-items: flex-start; }
+    .logo img { width: 128px; }
+    .btn { width: 100%; justify-content: center; }
+    .azioni { flex-direction: column; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .fascia-pista, .scheda b { animation: none; }
+    .fascia-gr[aria-hidden="true"] { display: none; }
+    .pausa-riga { display: none; }
+    .js .rv { opacity: 1; transform: none; transition: none; }
+    .cop-in { transition: none; transform: none !important; }
+    .btn, .persona { transition: none; }
+  }
+</style>
+</head>
+<body>
+<a class="salta" href="#contenuto"><span lang="it">Vai al contenuto</span><span lang="en">Skip to content</span></a>
+<div class="avanza" aria-hidden="true"><i id="avanza"></i></div>
+
+<header class="testa" id="testa">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Humanoide"><img src="humanoide-testata.webp" width="720" height="101" alt="Humanoide"></a>
+    <nav class="nav" aria-label="Sezioni / Sections">
+      <a href="#come"><span lang="it">Come si legge</span><span lang="en">How to read</span></a>
+      <a href="#articoli"><span lang="it">Articoli</span><span lang="en">Articles</span></a>
+      <a href="#direzione"><span lang="it">Direzione</span><span lang="en">Editorial board</span></a>
+      <a href="#consiglio"><span lang="it">Consiglio scientifico</span><span lang="en">Scientific Council</span></a>
+      <a href="#scrivi"><span lang="it">Scrivi per noi</span><span lang="en">Write for us</span></a>
+    </nav>
+    <div class="destra">
+      <div class="lingua" role="group" aria-label="Lingua / Language">
+        <button type="button" data-lingua="it" aria-pressed="true" aria-label="IT – Italiano">IT</button>
+        <button type="button" data-lingua="en" aria-pressed="false" aria-label="EN – English">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="contenuto">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="titolo">
+    <div class="wrap">
+      <div>
+        <p class="occhiello rv"><span lang="it">Trimestrale di cultura, innovazione e società</span><span lang="en">Quarterly of culture, innovation and society</span></p>
+        <h1 id="titolo" class="rv" style="--d:.08s">
+          <span lang="it">Idee.<br><em>Persone.</em><br>Futuro.</span>
+          <span lang="en">Ideas.<br><em>People.</em><br>Future.</span>
+        </h1>
+        <p class="lead rv" style="--d:.16s">
+          <span lang="it">Humanoide è la rivista di AssoUmanoidi: storie, idee e progetti per capire oggi e costruire il futuro. Quattro numeri l'anno su tecnologia, società, scienza e filosofia della convivenza tra esseri umani e umanoidi.</span>
+          <span lang="en">Humanoide is the magazine of AssoUmanoidi: stories, ideas and projects to understand today and build the future. Four issues a year on technology, society, science and the philosophy of coexistence between humans and humanoids.</span>
+        </p>
+        <div class="azioni rv" style="--d:.24s">
+          <a class="btn btn-oro" href="https://assoumanoidi.it/#aderisci" data-it="https://assoumanoidi.it/#aderisci" data-en="https://assoumanoidi.it/en#aderisci">
+            <span lang="it">Iscriviti per riceverla</span><span lang="en">Subscribe to receive it</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-linea" href="#come"><span lang="it">Come si legge</span><span lang="en">How to read it</span></a>
+        </div>
+        <ul class="chip rv" style="--d:.32s">
+          <li><strong>N.01</strong> · <span lang="it">gennaio–marzo 2027</span><span lang="en">January–March 2027</span></li>
+          <li><span lang="it">In uscita a <strong>dicembre 2026</strong></span><span lang="en">Out in <strong>December 2026</strong></span></li>
+          <li><strong>Online First</strong></li>
+        </ul>
+      </div>
+      <figure class="cop rv" style="--d:.12s; margin:0" id="cop">
+        <div class="cop-in" id="copin">
+          <img src="../rivista-copertina.webp" width="1024" height="1024" fetchpriority="high"
+               alt="Copertina provvisoria di Humanoide, numero 1, gennaio–marzo 2027: il volto di una donna accanto a un volto robotico">
+        </div>
+        <figcaption><span lang="it">Copertina provvisoria · lavoro in corso</span><span lang="en">Provisional cover · work in progress</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ FASCIA ============ -->
+  <div class="fascia-wrap">
+  <div class="fascia" aria-hidden="true">
+    <div class="fascia-pista">
+      <div class="fascia-gr">
+        <span lang="it">Tecnologia</span><span lang="en">Technology</span><i></i>
+        <span lang="it">Società</span><span lang="en">Society</span><i></i>
+        <span lang="it">Scienza</span><span lang="en">Science</span><i></i>
+        <span lang="it">Filosofia</span><span lang="en">Philosophy</span><i></i>
+        <span lang="it">Convivenza</span><span lang="en">Coexistence</span><i></i>
+      </div>
+      <div class="fascia-gr" aria-hidden="true">
+        <span lang="it">Tecnologia</span><span lang="en">Technology</span><i></i>
+        <span lang="it">Società</span><span lang="en">Society</span><i></i>
+        <span lang="it">Scienza</span><span lang="en">Science</span><i></i>
+        <span lang="it">Filosofia</span><span lang="en">Philosophy</span><i></i>
+        <span lang="it">Convivenza</span><span lang="en">Coexistence</span><i></i>
+      </div>
+    </div>
+  </div>
+  <div class="pausa-riga" id="pausa-riga"><div class="wrap">
+  <button type="button" class="pausa" id="pausa" aria-pressed="false">
+    <svg class="ic-pausa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+    <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg>
+    <span lang="it" class="p-it">Pausa animazioni</span><span lang="en" class="p-en">Pause animations</span>
+  </button>
+  </div></div>
+  </div>
+
+  <!-- ============ COME SI LEGGE ============ -->
+  <section class="sez carta" id="come" aria-labelledby="t-come">
+    <div class="wrap">
+      <p class="occhiello rv"><span lang="it">Il modello Online First</span><span lang="en">The Online First model</span></p>
+      <h2 id="t-come" class="rv" style="--d:.06s; margin-top:18px">
+        <span lang="it">Prima l'articolo, poi <em>il fascicolo.</em></span>
+        <span lang="en">First the article, then <em>the issue.</em></span>
+      </h2>
+      <ol class="passi">
+        <li class="rv">
+          <span class="n" aria-hidden="true">01</span>
+          <h3><span lang="it">Anteprima Online First</span><span lang="en">Online First preview</span></h3>
+          <p><span lang="it">Ogni articolo esce prima su questo sito, con la data di pubblicazione. Alcune anteprime sono ad accesso aperto, altre riservate agli abbonati.</span>
+             <span lang="en">Each article appears first on this site, with its publication date. Some previews are open access, others are reserved for subscribers.</span></p>
+        </li>
+        <li class="rv" style="--d:.1s">
+          <span class="n" aria-hidden="true">02</span>
+          <h3><span lang="it">Il fascicolo trimestrale</span><span lang="en">The quarterly issue</span></h3>
+          <p><span lang="it">Ogni tre mesi un PDF raccoglie gli articoli: è la Version of Record, l'edizione ufficiale e definitiva. Per chi legge è ad accesso libero.</span>
+             <span lang="en">Every three months a PDF gathers the articles: it is the Version of Record, the official and definitive edition. It is free for readers.</span></p>
+        </li>
+        <li class="rv" style="--d:.2s">
+          <span class="n" aria-hidden="true">03</span>
+          <h3><span lang="it">In più lingue</span><span lang="en">In several languages</span></h3>
+          <p><span lang="it">La rivista è multilingue, con traduzione automatica tramite intelligenza artificiale sulla piattaforma Speaqi. L'originale resta disponibile e prevale in caso di discrepanze.</span>
+             <span lang="en">The journal is multilingual, with automatic AI translation on the Speaqi platform. The original remains available and prevails in case of discrepancies.</span></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ ARTICOLI ============ -->
+  <section class="sez" id="articoli" aria-labelledby="t-art">
+    <div class="wrap">
+      <p class="occhiello rv"><span lang="it">Articoli</span><span lang="en">Articles</span></p>
+      <h2 id="t-art" class="rv" style="--d:.06s">
+        <span lang="it">Il primo articolo è <em>in preparazione.</em></span>
+        <span lang="en">The first article is <em>in the making.</em></span>
+      </h2>
+      <div class="arti" aria-hidden="true">
+        <div class="scheda rv"><b></b><b></b><b></b><b></b></div>
+        <div class="scheda rv" style="--d:.1s"><b></b><b></b><b></b><b></b></div>
+        <div class="scheda rv" style="--d:.2s"><b></b><b></b><b></b><b></b></div>
+      </div>
+      <div class="arti-nota rv">
+        <p class="muto">
+          <span lang="it">Gli articoli saranno pubblicati qui in anteprima Online First, prima del fascicolo trimestrale.</span>
+          <span lang="en">Articles will be published here in Online First preview, ahead of the quarterly issue.</span>
+        </p>
+        <a class="btn btn-oro" href="https://assoumanoidi.it/#aderisci" data-it="https://assoumanoidi.it/#aderisci" data-en="https://assoumanoidi.it/en#aderisci">
+          <span lang="it">Iscriviti per restare aggiornato</span><span lang="en">Subscribe to stay updated</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIREZIONE ============ -->
+  <section class="sez carta" id="direzione" aria-labelledby="t-dir">
+    <div class="wrap dir">
+      <div>
+        <p class="occhiello rv"><span lang="it">Chi fa la rivista</span><span lang="en">Who makes the journal</span></p>
+        <h2 id="t-dir" class="rv" style="--d:.06s; margin-top:18px">
+          <span lang="it"><em>Direzione</em></span>
+          <span lang="en"><em>Editorial</em> board</span>
+        </h2>
+      </div>
+      <ul class="ruoli">
+        <li class="rv"><small><span lang="it">Direttore editoriale</span><span lang="en">Editorial Director</span></small><b>Massimo Morgante</b></li>
+        <li class="rv" style="--d:.05s"><small><span lang="it">Direttore responsabile</span><span lang="en">Editor-in-Chief</span></small><b>Marco Marsili</b></li>
+        <li class="rv" style="--d:.1s"><small><span lang="it">Direttore scientifico</span><span lang="en">Scientific Director</span></small><b>Marco Marsili</b></li>
+        <li class="rv" style="--d:.15s"><small><span lang="it">Vicedirettore vicario</span><span lang="en">Deputy Editor-in-Chief</span></small><b>Fabio Morotti</b></li>
+        <li class="rv" style="--d:.2s"><small><span lang="it">Vicedirettore responsabile comunicazione e progetti speciali</span><span lang="en">Deputy Editor for Communications and Special Projects</span></small><b>Gabriele Gobbo</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CONSIGLIO SCIENTIFICO ============ -->
+  <section class="sez" id="consiglio" aria-labelledby="t-cons">
+    <div class="wrap">
+      <p class="occhiello rv"><span lang="it">Consiglio scientifico</span><span lang="en">Scientific Council</span></p>
+      <h2 id="t-cons" class="rv" style="--d:.06s">
+        <span lang="it">Studiosi di etica, diritto, <em>robotica</em> e scienze sociali.</span>
+        <span lang="en">Scholars of ethics, law, <em>robotics</em> and the social sciences.</span>
+      </h2>
+      <p class="intro-sez muto rv" style="--d:.1s">
+        <span lang="it">Presieduto dal Direttore scientifico, il Consiglio scientifico accompagna la rivista.</span>
+        <span lang="en">Chaired by the Scientific Director, the Scientific Council supports the journal.</span>
+      </p>
+      <ul class="griglia">
+        <li class="persona dr rv"><span class="ini" aria-hidden="true">MM</span><div>
+          <span class="ruolo"><span lang="it">Direttore scientifico</span><span lang="en">Scientific Director</span></span>
+          <h3>Marco Marsili</h3>
+          <p><span lang="it">CEI-Iscte, Lisbona</span><span lang="en">CEI-Iscte, Lisbon</span></p></div></li>
+        <li class="persona rv"><span class="ini" aria-hidden="true">CP</span><div><h3>Carla Petrocelli</h3>
+          <p><span lang="it">Università di Bari Aldo Moro · Storia della scienza e delle tecniche</span><span lang="en">University of Bari Aldo Moro · History of Science and Techniques</span></p></div></li>
+        <li class="persona rv" style="--d:.05s"><span class="ini" aria-hidden="true">DD</span><div><h3>Dorota Domalewska</h3>
+          <p><span lang="it">War Studies University, Varsavia · Scuola di dottorato</span><span lang="en">War Studies University, Warsaw · Doctoral School</span></p></div></li>
+        <li class="persona rv" style="--d:.1s"><span class="ini" aria-hidden="true">IP</span><div><h3>István Polgár</h3>
+          <p><span lang="it">Università di Oradea, Romania · Relazioni internazionali e studi europei</span><span lang="en">University of Oradea, Romania · International Relations and European Studies</span></p></div></li>
+        <li class="persona rv"><span class="ini" aria-hidden="true">JR</span><div><h3>Jesús Ignacio Delgado Rojas</h3>
+          <p><span lang="it">Università di Siviglia · Filosofia del diritto</span><span lang="en">University of Seville · Philosophy of Law</span></p></div></li>
+        <li class="persona rv" style="--d:.05s"><span class="ini" aria-hidden="true">MK</span><div><h3>Małgorzata Kamola-Cieślik</h3>
+          <p><span lang="it">Università di Szczecin · Sistemi politici e politiche pubbliche</span><span lang="en">University of Szczecin · Political Systems and Public Policy</span></p></div></li>
+        <li class="persona rv" style="--d:.1s"><span class="ini" aria-hidden="true">MG</span><div><h3>Marek Górka</h3>
+          <p><span lang="it">Koszalin University of Technology · Facoltà di Scienze umanistiche</span><span lang="en">Koszalin University of Technology · Faculty of Humanities</span></p></div></li>
+        <li class="persona rv"><span class="ini" aria-hidden="true">ÖT</span><div><h3>Özgür Tüfekçi</h3>
+          <p><span lang="it">Karadeniz Technical University, Trebisonda · Relazioni internazionali</span><span lang="en">Karadeniz Technical University, Trabzon · International Relations</span></p></div></li>
+        <li class="persona rv" style="--d:.05s"><span class="ini" aria-hidden="true">RD</span><div><h3>Rahman Dağ</h3>
+          <p><span lang="it">Marmara University · Scienze politiche e relazioni internazionali</span><span lang="en">Marmara University · Political Science and International Relations</span></p></div></li>
+        <li class="persona rv" style="--d:.1s"><span class="ini" aria-hidden="true">RD</span><div><h3>Rashed Daher</h3>
+          <p><span lang="it">Centro per il mondo arabo contemporaneo, ELTE, Budapest</span><span lang="en">Center for the Contemporary Arab World, ELTE, Budapest</span></p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SCRIVI ============ -->
+  <section class="sez carta scrivi" id="scrivi" aria-labelledby="t-scr">
+    <div class="wrap">
+      <div>
+        <p class="occhiello rv"><span lang="it">Suggerimenti e proposte</span><span lang="en">Suggestions and proposals</span></p>
+        <h2 id="t-scr" class="rv" style="--d:.06s; margin-top:18px">
+          <span lang="it">Scrivi per <em>Humanoide.</em></span>
+          <span lang="en">Write for <em>Humanoide.</em></span>
+        </h2>
+        <p class="muto rv" style="--d:.1s">
+          <span lang="it">Hai una storia, una ricerca o un'idea da proporre alla rivista? Leggi le norme per gli autori e inviaci la tua proposta.</span>
+          <span lang="en">Do you have a story, a piece of research or an idea to propose to the magazine? Read the author guidelines and send us your proposal.</span>
+        </p>
+      </div>
+      <a class="btn btn-navy rv" style="--d:.14s" href="https://assoumanoidi.it/rivista/norme-per-autori" data-it="https://assoumanoidi.it/rivista/norme-per-autori" data-en="https://assoumanoidi.it/en/journal/author-guidelines">
+        <span lang="it">Norme per gli autori</span><span lang="en">Author guidelines</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ ISCRIZIONE ============ -->
+  <section class="sez iscr" aria-labelledby="t-iscr">
+    <div class="wrap">
+      <p class="occhiello rv"><span lang="it">AssoUmanoidi</span><span lang="en">AssoUmanoidi</span></p>
+      <h2 id="t-iscr" class="rv" style="--d:.06s; margin-top:18px">
+        <span lang="it">Il futuro della convivenza <em>si legge insieme.</em></span>
+        <span lang="en">The future of coexistence <em>is read together.</em></span>
+      </h2>
+      <p class="muto rv" style="--d:.1s">
+        <span lang="it">La rivista è un progetto di AssoUmanoidi. Iscrivendoti all'associazione ricevi il numero trimestrale e le novità sulla rivista.</span>
+        <span lang="en">The magazine is a project of AssoUmanoidi. By joining the association you receive the quarterly issue and news about the journal.</span>
+      </p>
+      <div class="azioni rv" style="--d:.16s">
+        <a class="btn btn-oro" href="https://assoumanoidi.it/#aderisci" data-it="https://assoumanoidi.it/#aderisci" data-en="https://assoumanoidi.it/en#aderisci">
+          <span lang="it">Iscriviti per riceverla</span><span lang="en">Subscribe to receive it</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <p class="piccolo muto rv" style="--d:.2s"><span lang="it">Si apre il modulo di iscrizione all'associazione, sul sito di AssoUmanoidi.</span><span lang="en">This opens the association's membership form on the AssoUmanoidi website.</span></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Humanoide"><img src="humanoide-testata.webp" width="720" height="101" alt="Humanoide"></a>
+    <nav aria-label="Link / Links">
+      <a href="../colophon.html">Colophon</a>
+      <a href="https://assoumanoidi.it/rivista/norme-per-autori" data-it="https://assoumanoidi.it/rivista/norme-per-autori" data-en="https://assoumanoidi.it/en/journal/author-guidelines"><span lang="it">Norme per gli autori</span><span lang="en">Author guidelines</span></a>
+      <a href="https://assoumanoidi.it" data-it="https://assoumanoidi.it" data-en="https://assoumanoidi.it/en">AssoUmanoidi</a>
+    </nav>
+    <p style="margin:0"><span lang="it">© AssoUmanoidi – Associazione per i diritti degli umanoidi. Humanoide è edita da AssoUmanoidi.</span><span lang="en">© AssoUmanoidi – Association for Humanoid Rights. Humanoide is published by AssoUmanoidi.</span></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- lingua ---- */
+  var TITOLI = { it: 'Humanoide — la rivista di AssoUmanoidi', en: 'Humanoide — the journal of AssoUmanoidi' };
+  var bottoni = document.querySelectorAll('[data-lingua]');
+  function lingua(l) {
+    root.lang = l;
+    document.title = TITOLI[l];
+    bottoni.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lingua') === l)); });
+    document.querySelectorAll('a[data-it]').forEach(function (a) { a.href = a.getAttribute('data-' + l); });
+    try { localStorage.setItem('humanoide-lingua', l); } catch (e) {}
+  }
+  bottoni.forEach(function (b) { b.addEventListener('click', function () { lingua(b.getAttribute('data-lingua')); }); });
+  var salvata = null;
+  try { salvata = localStorage.getItem('humanoide-lingua'); } catch (e) {}
+  if (salvata === 'en') lingua('en');
+
+  /* ---- intestazione, avanzamento ---- */
+  var testa = document.getElementById('testa'), barra = document.getElementById('avanza'), tick = false;
+  function aggiorna() {
+    var y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+    testa.classList.toggle('sc', y > 24);
+    barra.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+    tick = false;
+  }
+  window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(aggiorna); } }, { passive: true });
+  aggiorna();
+
+  /* ---- comparsa allo scorrimento ---- */
+  var rv = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    rv.forEach(function (e) { e.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (voci) {
+      voci.forEach(function (v) { if (v.isIntersecting) { v.target.classList.add('in'); io.unobserve(v.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    rv.forEach(function (e) {
+      // già dentro la finestra all'apertura: compare subito, senza aspettare lo scorrimento
+      if (e.getBoundingClientRect().top < window.innerHeight) { e.classList.add('in'); }
+      else { io.observe(e); }
+    });
+  }
+
+  /* ---- voce di menu attiva ---- */
+  var link = {};
+  document.querySelectorAll('.nav a').forEach(function (a) { link[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window) {
+    var so = new IntersectionObserver(function (voci) {
+      voci.forEach(function (v) {
+        if (!v.isIntersecting) return;
+        Object.keys(link).forEach(function (k) { link[k].removeAttribute('aria-current'); });
+        if (link[v.target.id]) link[v.target.id].setAttribute('aria-current', 'true');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(link).forEach(function (k) { var s = document.getElementById(k); if (s) so.observe(s); });
+  }
+
+  /* ---- pausa delle animazioni continue ---- */
+  var pausa = document.getElementById('pausa');
+  if (pausa) {
+    if (reduce) { document.getElementById('pausa-riga').hidden = true; }
+    pausa.addEventListener('click', function () {
+      var ferma = root.classList.toggle('ferma');
+      pausa.setAttribute('aria-pressed', String(ferma));
+    });
+  }
+
+  /* ---- copertina che segue il puntatore ---- */
+  var cop = document.getElementById('cop'), ci = document.getElementById('copin');
+  if (cop && !reduce && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    cop.addEventListener('pointermove', function (e) {
+      var r = cop.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      ci.classList.add('muove');
+      ci.style.setProperty('--ry', (x * 9).toFixed(2) + 'deg');
+      ci.style.setProperty('--rx', (-y * 9).toFixed(2) + 'deg');
+    });
+    cop.addEventListener('pointerleave', function () {
+      ci.classList.remove('muove');
+      ci.style.setProperty('--rx', '0deg'); ci.style.setProperty('--ry', '0deg');
+    });
+  }
+})();
+</script>
+</body>
+</html>
