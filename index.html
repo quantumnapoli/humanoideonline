@@ -65,6 +65,10 @@
     .copertina { order: -1; max-width: 360px; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  .consiglio { list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .consiglio li { background: var(--navy-2); border: 1px solid var(--linea); border-radius: 10px; padding: 14px 16px; }
+  .consiglio strong { display: block; font-size: 16px; }
+  .consiglio span { display: block; color: var(--grigio); font-size: 14px; margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -115,11 +119,27 @@
     <section id="direzione" class="blocco">
       <h2>Direzione</h2>
       <div class="direttore">
+        <p><strong>Direttore editoriale:</strong> Massimo Morgante</p>
         <p><strong>Direttore responsabile:</strong> Marco Marsili</p>
         <p><strong>Direttore scientifico:</strong> Marco Marsili</p>
         <p><strong>Vicedirettore vicario:</strong> Fabio Morotti</p>
         <p><strong>Vicedirettore responsabile comunicazione e progetti speciali:</strong> Gabriele Gobbo</p>
       </div>
+    </section>
+
+    <section id="consiglio-scientifico" class="blocco">
+      <h2>Consiglio scientifico</h2>
+      <p>Presieduto dal Direttore scientifico, raccoglie studiosi di etica, diritto, robotica e scienze sociali che accompagnano la rivista.</p>
+      <ul class="consiglio">
+        <li><strong>Marco Marsili</strong><span>Direttore scientifico · CEI-Iscte, Lisbona</span></li>
+        <li><strong>Carla Petrocelli</strong><span>Università di Bari Aldo Moro · Storia della scienza e delle tecniche</span></li>
+        <li><strong>Dorota Domalewska</strong><span>War Studies University, Varsavia · Scuola di dottorato</span></li>
+        <li><strong>Jesús Ignacio Delgado Rojas</strong><span>Università di Siviglia · Filosofia del diritto</span></li>
+        <li><strong>Małgorzata Kamola-Cieślik</strong><span>Università di Szczecin · Sistemi politici e politiche pubbliche</span></li>
+        <li><strong>Marek Górka</strong><span>Koszalin University of Technology · Facoltà di Scienze umanistiche</span></li>
+        <li><strong>Özgür Tüfekçi</strong><span>Karadeniz Technical University, Trebisonda · Relazioni internazionali</span></li>
+        <li><strong>Rashed Daher</strong><span>Centro per il mondo arabo contemporaneo, ELTE, Budapest</span></li>
+      </ul>
     </section>
 
     <section class="iscriviti">
@@ -166,11 +186,27 @@
     <section id="direzione-en" class="blocco">
       <h2>Editorial board</h2>
       <div class="direttore">
+        <p><strong>Editorial Director:</strong> Massimo Morgante</p>
         <p><strong>Editor-in-Chief:</strong> Marco Marsili</p>
         <p><strong>Scientific Director:</strong> Marco Marsili</p>
         <p><strong>Deputy Editor-in-Chief:</strong> Fabio Morotti</p>
         <p><strong>Deputy Editor for Communications and Special Projects:</strong> Gabriele Gobbo</p>
       </div>
+    </section>
+
+    <section id="consiglio-scientifico-en" class="blocco">
+      <h2>Scientific Council</h2>
+      <p>Chaired by the Scientific Director, it brings together scholars of ethics, law, robotics and the social sciences who support the journal.</p>
+      <ul class="consiglio">
+        <li><strong>Marco Marsili</strong><span>Scientific Director · CEI-Iscte, Lisbon</span></li>
+        <li><strong>Carla Petrocelli</strong><span>University of Bari Aldo Moro · History of Science and Techniques</span></li>
+        <li><strong>Dorota Domalewska</strong><span>War Studies University, Warsaw · Doctoral School</span></li>
+        <li><strong>Jesús Ignacio Delgado Rojas</strong><span>University of Seville · Philosophy of Law</span></li>
+        <li><strong>Małgorzata Kamola-Cieślik</strong><span>University of Szczecin · Political Systems and Public Policy</span></li>
+        <li><strong>Marek Górka</strong><span>Koszalin University of Technology · Faculty of Humanities</span></li>
+        <li><strong>Özgür Tüfekçi</strong><span>Karadeniz Technical University, Trabzon · International Relations</span></li>
+        <li><strong>Rashed Daher</strong><span>Center for the Contemporary Arab World, ELTE, Budapest</span></li>
+      </ul>
     </section>
 
     <section class="iscriviti">
