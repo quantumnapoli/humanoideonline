@@ -73,4 +73,20 @@ const svg = `          <svg class="mappa" id="mappa" viewBox="0 0 ${W} ${H}" rol
 const qui = new URL('.', import.meta.url);
 const tpl = fs.readFileSync(new URL('index.template.html', qui), 'utf8');
 fs.writeFileSync(new URL('../index.html', qui), tpl.replace('<!--MAPPA-->', svg));
+
+// Versione nei nomi dei file: davanti al sito c'è Cloudflare, che tiene CSS e JS
+// nella cache del browser per ore. Con ?v=<impronta del contenuto> ogni modifica
+// ha un indirizzo nuovo e nessuno può ritrovarsi l'HTML nuovo con il CSS vecchio.
+import { createHash } from 'node:crypto';
+const impronta = (f) => createHash('sha1').update(fs.readFileSync(new URL('../' + f, qui))).digest('hex').slice(0, 10);
+const file = ['stile.css', 'app.js', 'vendor/gsap.min.js', 'vendor/ScrollTrigger.min.js', 'vendor/lenis.min.js'];
+for (const pagina of ['../index.html', '../colophon.html']) {
+  let h = fs.readFileSync(new URL(pagina, qui), 'utf8');
+  for (const f of file) {
+    const esc = f.replace(/[.\/]/g, (c) => '\\' + c);
+    h = h.replace(new RegExp('(["\'])' + esc + '(\\?v=[0-9a-f]+)?(["\'])', 'g'), '$1' + f + '?v=' + impronta(f) + '$3');
+  }
+  fs.writeFileSync(new URL(pagina, qui), h);
+}
+console.log('versioni:', file.map((f) => f + '=' + impronta(f)).join('  '));
 console.log('index.html scritto: puntini', punti.split('M').length - 1, '· kB mappa', (svg.length / 1024).toFixed(0));
