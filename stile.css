@@ -147,6 +147,7 @@ html.menu-aperto { overflow: hidden; }
 .cop-anello { position: absolute; width: 132%; left: -16%; top: 50%; translate: 0 -50%; color: rgba(212,168,67,.5); z-index: -1; pointer-events: none;
   animation: gira 60s linear infinite; }
 .cop-anello text { font: 600 6.2px var(--font); letter-spacing: 2.6px; fill: rgba(212,168,67,.55); }
+.cop-para { position: relative; }
 .cop-in { position: relative; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transform-style: preserve-3d; transition: transform .7s var(--ease-out); border-radius: 8px; }
 .cop-in.muove { transition: transform .12s linear; }
 .cop-in img { border-radius: 8px; box-shadow: 0 60px 100px -40px rgba(0,0,0,.85), 0 30px 60px -30px rgba(0,0,0,.6), 0 0 0 1px rgba(246,244,238,.1); }
@@ -273,10 +274,14 @@ html.ferma .c-onda, html.ferma .iscr-simbolo { animation-play-state: paused !imp
 .citta.attiva .c-nome, .sede .c-nome { opacity: 1; }
 .mappa.c-on .sede:not(.attiva) .c-nome { opacity: 0; }
 .mappa-nota { font-size: 13px; margin: 14px 0 0; }
+.n-tocco { display: none; }
+@media (hover: none) { .n-mouse { display: none; } .n-tocco { display: inline; } }
 .membri { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .membro { position: relative; display: flex; gap: 16px; align-items: flex-start; padding: 16px 18px; border: 1px solid var(--linea); border-radius: 18px; background: rgba(6,18,39,.45);
-  transition: border-color .3s, background .3s, transform .4s var(--ease-out); cursor: default; }
-.membro:hover, .membro:focus-visible, .membro.attivo { border-color: rgba(212,168,67,.6); background: rgba(212,168,67,.08); transform: translateX(6px); }
+  min-width: 0; transition: border-color .3s, background .3s, translate .4s var(--ease-out); cursor: default; }
+.membro > div { min-width: 0; }
+.membro:hover, .membro:focus-visible, .membro.attivo { border-color: rgba(212,168,67,.6); background: rgba(212,168,67,.08); }
+@media (hover: hover) and (min-width: 981px) { .membro:hover, .membro.attivo { translate: 6px 0; } }
 .membro h3 { font-size: 18px; letter-spacing: -.015em; line-height: 1.25; }
 .membro p { margin: 3px 0 0; color: var(--muto); font-size: 14px; line-height: 1.45; }
 .membro .ruolo { display: block; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--oro); margin-bottom: 4px; }
@@ -374,7 +379,6 @@ footer .logo img { width: 150px; }
   .numeri dt { font-size: 12.5px; }
   .voce { padding-inline: 0; }
   .voce:hover .v-tit { transform: none; }
-  .membro:hover, .membro.attivo { transform: none; }
   .pag-corpo .riga { grid-template-columns: 1fr; }
   .piede-riga { flex-direction: column; align-items: flex-start; }
 }

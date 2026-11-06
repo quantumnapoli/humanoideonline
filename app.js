@@ -159,6 +159,8 @@
   /* ---------------------------------------------------------------- mappa del Consiglio scientifico */
   var mappa = $('#mappa');
   if (mappa) {
+    var etichettaMappa = function (l) { mappa.setAttribute('aria-label', mappa.getAttribute('data-label-' + l) || ''); };
+    etichettaMappa(root.lang); dopoLingua.push(etichettaMappa);
     var gCitta = {}, archi = $$('.arco', mappa), membri = $$('.membro');
     $$('.citta', mappa).forEach(function (g) { gCitta[g.getAttribute('data-citta')] = g; });
     var attuale = null;
@@ -320,7 +322,7 @@
 
   /* ---- HERO: allo scorrimento la scena si allontana ---- */
   gsap.to('.hero-testo', { yPercent: -14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.to('#copin', { y: 140, rotate: -5, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.cop-para', { y: 140, rotate: -5, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
   gsap.to('.rete, .hero-alone', { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'center top', end: 'bottom top', scrub: true } });
 
   /* ---- titoli di sezione: le parole salgono dalla riga ---- */
@@ -397,7 +399,7 @@
   }
 
   /* ---- sommario del numero 1 ---- */
-  gsap.from('.voce', { opacity: 0, y: 46, duration: 1.1, ease: 'expo.out', stagger: .07,
+  gsap.fromTo('.voce', { opacity: 0, y: 46 }, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', stagger: .07, clearProps: 'all',
     scrollTrigger: { trigger: '#sommario', start: 'top 82%', once: true } });
 
   /* ---- numeri del Consiglio: contano ---- */
@@ -417,7 +419,8 @@
        .from('.c-punto', { attr: { r: 0 }, duration: .8, ease: 'back.out(3)', stagger: .06 }, .3)
        .to(archiM, { strokeDashoffset: 0, duration: 1.5, ease: 'power3.inOut', stagger: .08,
          onComplete: function () { archiM.forEach(function (a) { a.style.strokeDasharray = ''; a.style.strokeDashoffset = ''; }); } }, .5);
-    gsap.from('.membro', { opacity: 0, x: 30, duration: 1, ease: 'expo.out', stagger: .05,
+    // fromTo + clearProps: a fine animazione lo spostamento torna al CSS (effetto al passaggio)
+    gsap.fromTo('.membro', { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 1, ease: 'expo.out', stagger: .05, clearProps: 'all',
       scrollTrigger: { trigger: '#membri', start: 'top 85%', once: true } });
   }
 

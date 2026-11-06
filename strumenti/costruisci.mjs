@@ -58,8 +58,7 @@ const nodi = citta.map((c) => `<g class="citta${c.id === 'lisbona' ? ' sede' : '
 
 const titoloIt = 'Mappa delle sedi del Consiglio scientifico: ' + citta.map((c) => c.it).join(', ') + '.';
 const titoloEn = 'Map of the Scientific Council locations: ' + citta.map((c) => c.en).join(', ') + '.';
-const svg = `          <svg class="mappa" id="mappa" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="mappa-it mappa-en">
-            <title id="mappa-it" lang="it">${titoloIt}</title><title id="mappa-en" lang="en">${titoloEn}</title>
+const svg = `          <svg class="mappa" id="mappa" viewBox="0 0 ${W} ${H}" role="img" aria-label="${titoloIt}" data-label-it="${titoloIt}" data-label-en="${titoloEn}">
             <path class="m-punti" d="${punti}"/>
             <path class="m-confini" d="${confini}"/>
             <g class="m-archi">
