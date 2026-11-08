@@ -15,8 +15,8 @@ const atlante = (f) => JSON.parse(fs.readFileSync(require.resolve('world-atlas/'
 const W = 1000, H = 640, PASSO = 9;
 const terre = atlante('land-50m.json'), paesi = atlante('countries-50m.json');
 const land = feature(terre, terre.objects.land);
-const riquadro = { type: 'MultiPoint', coordinates: [[-11, 35.2], [42.5, 35.2], [-11, 57.5], [42.5, 57.5], [15, 59]] };
-const proj = geoConicConformal().rotate([-15, 0]).parallels([38, 55]).fitExtent([[24, 24], [W - 24, H - 24]], riquadro);
+const riquadro = { type: 'MultiPoint', coordinates: [[-11, 35.2], [46.5, 35.2], [-11, 57.5], [46.5, 57.5], [17, 59]] };
+const proj = geoConicConformal().rotate([-17, 0]).parallels([38, 55]).fitExtent([[24, 24], [W - 24, H - 24]], riquadro);
 const path = geoPath(proj.clipExtent([[0, 0], [W, H]]));
 const r1 = (s) => s.replace(/(\d+\.\d)\d+/g, '$1');
 
@@ -39,6 +39,7 @@ const citta = [
   ['trebisonda', 'Trebisonda', 'Trabzon', 39.72, 41.0],
   ['istanbul', 'Istanbul', 'Istanbul', 28.98, 41.01],
   ['budapest', 'Budapest', 'Budapest', 19.04, 47.5],
+  ['tbilisi', 'Tbilisi', 'Tbilisi', 44.79, 41.72],
 ].map(([id, it, en, lon, lat]) => { const [x, y] = proj([lon, lat]); return { id, it, en, x: +x.toFixed(1), y: +y.toFixed(1) }; });
 
 // archi: dal Direttore scientifico (Lisbona) a ogni altra sede, curvati verso nord
