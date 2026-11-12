@@ -31,6 +31,7 @@ const confini = r1(path(mesh(paesi, paesi.objects.countries, (a, b) => a !== b))
 const citta = [
   ['lisbona', 'Lisbona', 'Lisbon', -9.14, 38.72],
   ['bari', 'Bari', 'Bari', 16.87, 41.12],
+  ['roma', 'Roma', 'Rome', 12.50, 41.90],
   ['varsavia', 'Varsavia', 'Warsaw', 21.01, 52.23],
   ['oradea', 'Oradea', 'Oradea', 21.93, 47.07],
   ['siviglia', 'Siviglia', 'Seville', -5.98, 37.39],
