@@ -15,3 +15,35 @@
   for = "/vendor/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# Digest di Humanoide: le pagine le genera l'app del Digest (Railway) e Netlify le serve da humanoideonline.com.
+# Proxy (status 200): l'indirizzo resta humanoideonline.com/digest. /_next/* sono i file dell'app (CSS, script, font).
+[[redirects]]
+  from = "/digest"
+  to = "https://web-production-5f011.up.railway.app/digest"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/digest/*"
+  to = "https://web-production-5f011.up.railway.app/digest/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/en/digest"
+  to = "https://web-production-5f011.up.railway.app/en/digest"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/en/digest/*"
+  to = "https://web-production-5f011.up.railway.app/en/digest/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/_next/*"
+  to = "https://web-production-5f011.up.railway.app/_next/:splat"
+  status = 200
+  force = true
