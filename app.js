@@ -13,6 +13,8 @@
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
   var lenis = null;
   var dopoLingua = [];
+  var stretto = window.matchMedia('(max-width: 980px)');
+  if (!fine) root.classList.add('tocco');
 
   /* ---------------------------------------------------------------- lingua */
   function titolo(l) { return root.getAttribute('data-titolo-' + l) || document.title; }
@@ -217,7 +219,7 @@
       W = r.width; H = r.height;
       tela.width = W * dpr; tela.height = H * dpr;
       cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var n = Math.max(24, Math.min(80, Math.round(W * H / 16000)));
+      var n = Math.max(30, Math.min(80, Math.round(W * H / (fine ? 16000 : 8500))));
       nodi = [];
       for (var i = 0; i < n; i++) nodi.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3, r: Math.random() * 1.4 + .7 });
     };
@@ -242,11 +244,23 @@
         cx.fillStyle = 'rgba(212,168,67,.75)'; cx.beginPath(); cx.arc(a.x, a.y, a.r, 0, 6.2832); cx.fill();
       }
     };
+    // senza mouse un punto luminoso gira da solo nella scena; un tocco lo sposta per qualche secondo
+    var tocco = 0;
     var giro = function (t) {
       requestAnimationFrame(giro);
       if (!visibile || document.hidden || root.classList.contains('ferma') || t - ultimo < 30) return;
-      ultimo = t; disegna(true);
+      ultimo = t;
+      if (!fine && t - tocco > 2500) {
+        var k = t / 1000;
+        punt.x = W * (.5 + .36 * Math.sin(k * .45)); punt.y = H * (.42 + .3 * Math.sin(k * .7 + 1.3));
+      }
+      disegna(true);
     };
+    if (!fine) {
+      var aTocco = function (e) { var q = e.touches ? e.touches[0] : e, r = hero.getBoundingClientRect(); punt.x = q.clientX - r.left; punt.y = q.clientY - r.top; tocco = performance.now(); };
+      hero.addEventListener('touchstart', aTocco, { passive: true });
+      hero.addEventListener('touchmove', aTocco, { passive: true });
+    }
     misura();
     if (reduce) { disegna(false); }
     else {
@@ -303,26 +317,68 @@
     return span.map(function (s) { return spezza(s, classe, maschera); });
   }
 
-  /* ---- HERO: entrata ---- */
+  /* ---- HERO: il titolo diventa lettere (la copia intera resta per i lettori di schermo) ---- */
+  var lettere = $$('.hero-titolo > [lang]').map(function (lng) {
+    var tutte = [];
+    $$('.riga-in', lng).forEach(function (r) {
+      var testo = r.textContent, vis = document.createElement('span'), sr = document.createElement('span');
+      vis.setAttribute('aria-hidden', 'true'); sr.className = 'vh'; sr.textContent = testo;
+      Array.prototype.forEach.call(testo, function (c) { var ch = document.createElement('span'); ch.className = 'ch'; ch.textContent = c; vis.appendChild(ch); tutte.push(ch); });
+      r.textContent = ''; r.appendChild(sr); r.appendChild(vis);
+    });
+    return tutte;
+  });
+
+  /* ---- HERO: stati iniziali, nascosti dal caricamento ---- */
   var righe = $$('.hero-titolo .riga-in'), su = $$('.h-su'), anello = $('.cop-anello');
-  gsap.set(righe, { y: 0, yPercent: 110 });
+  var telefono = stretto.matches;
+  gsap.set(righe, { y: 0, yPercent: 0 });
+  gsap.set($$('.ch'), { yPercent: 118, rotate: 9, opacity: 0 });
   gsap.set(su, { opacity: 0, y: 26 });
-  gsap.set(cop, { opacity: 0, y: 70, rotateY: -28, rotateX: 10, scale: .9, transformPerspective: 1200 });
+  gsap.set(cop, telefono
+    ? { opacity: 0, y: 160, rotateX: 58, rotateY: -32, rotateZ: 8, scale: .62, transformPerspective: 900 }
+    : { opacity: 0, y: 70, rotateY: -28, rotateX: 10, scale: .9, transformPerspective: 1200 });
+  gsap.set(anello, { opacity: 0, scale: .45, rotate: -120 });
   gsap.set('.scorri', { opacity: 0 });
   gsap.set(testa, { opacity: 0, y: -20 });
+  if (lenis && root.classList.contains('carica-on')) lenis.stop();
   root.classList.remove('mo-pre');
-  var entrata = gsap.timeline({ defaults: { ease: 'expo.out' }, delay: .1 });
+
+  /* ---- HERO: entrata, appena il caricamento si apre ---- */
+  var entrata = gsap.timeline({ paused: true, defaults: { ease: 'expo.out' } });
+  lettere.forEach(function (g) { entrata.to(g, { yPercent: 0, rotate: 0, opacity: 1, duration: 1.25, stagger: .035, clearProps: 'transform,opacity' }, .05); });
   entrata
-    .to(righe, { yPercent: 0, duration: 1.3, stagger: .11 })
-    .to(cop, { opacity: 1, y: 0, rotateY: 0, rotateX: 0, scale: 1, duration: 1.8, clearProps: 'transform' }, .15)
-    .from(anello, { scale: .6, opacity: 0, duration: 2 }, .3)
-    .to(su, { opacity: 1, y: 0, duration: 1.1, stagger: .08, clearProps: 'transform' }, .45)
-    .to(testa, { opacity: 1, y: 0, duration: 1, clearProps: 'all' }, .6)
-    .to('.scorri', { opacity: 1, duration: 1 }, 1);
+    .to(cop, telefono
+      ? { opacity: 1, y: 0, rotateX: 8, rotateY: -16, rotateZ: 2, scale: 1, duration: 2 }
+      : { opacity: 1, y: 0, rotateY: 0, rotateX: 0, scale: 1, duration: 1.8, clearProps: 'transform' }, .25)
+    .to(anello, { opacity: 1, scale: 1, rotate: 0, duration: 2.4, clearProps: 'transform' }, .4)
+    .to(su, { opacity: 1, y: 0, duration: 1.1, stagger: .09, clearProps: 'transform' }, .6)
+    .to(testa, { opacity: 1, y: 0, duration: 1, clearProps: 'all' }, .7)
+    .to('.scorri', { opacity: 1, duration: 1 }, 1.1);
+
+  /* sul telefono la copertina resta viva: ondeggia piano nello spazio */
+  if (telefono) {
+    entrata.add(function () {
+      var ondeggia = gsap.timeline({ repeat: -1, yoyo: true, defaults: { ease: 'sine.inOut', duration: 3.4 } })
+        .to(cop, { rotateY: 12, rotateX: -4, rotateZ: -1.5, y: -10 });
+      allaPausa.push(function (ferma) { ferma ? ondeggia.pause() : ondeggia.resume(); });
+      if (root.classList.contains('ferma')) ondeggia.pause();
+    }, 2.2);
+  }
+  var partito = false;
+  function parti() { if (partito) return; partito = true; if (lenis) lenis.start(); entrata.play(); }
+  if (window.HUMANOIDE_PRONTO || !root.classList.contains('carica-on')) parti();
+  else { document.addEventListener('humanoide:pronto', parti); setTimeout(parti, 7000); }
 
   /* ---- HERO: allo scorrimento la scena si allontana ---- */
-  gsap.to('.hero-testo', { yPercent: -14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.to('.cop-para', { y: 140, rotate: -5, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  var scena = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
+  if (telefono) {
+    gsap.to('.hero-titolo', { yPercent: -28, ease: 'none', scrollTrigger: scena });
+    gsap.to('.cop-para', { y: -50, scale: 1.1, ease: 'none', scrollTrigger: scena });
+  } else {
+    gsap.to('.hero-testo', { yPercent: -14, ease: 'none', scrollTrigger: scena });
+    gsap.to('.cop-para', { y: 140, rotate: -5, ease: 'none', scrollTrigger: scena });
+  }
   gsap.to('.rete, .hero-alone', { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'center top', end: 'bottom top', scrub: true } });
 
   /* ---- titoli di sezione: le parole salgono dalla riga ---- */

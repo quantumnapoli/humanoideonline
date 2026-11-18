@@ -17,16 +17,46 @@
 <link rel="apple-touch-icon" href="apple-icon.png">
 <link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="rivista-copertina.webp" as="image" fetchpriority="high">
-<link rel="stylesheet" href="stile.css?v=4f60ad8fbd">
+<link rel="stylesheet" href="stile.css?v=2711d9189b">
+<style>
+  /* caricamento: deve comparire prima del foglio di stile */
+  .carica { display: none; }
+  .carica-on .carica { display: block; position: fixed; inset: 0; z-index: 9999; color: #f6f4ee; font-family: 'Geist', system-ui, sans-serif; }
+  .carica-on, .carica-on body { overflow: hidden; }
+  .car-pan { position: absolute; left: 0; right: 0; height: 50.5%; background: #0b1d3a; transition: transform 1s cubic-bezier(.77,0,.18,1); }
+  .car-su { top: 0; } .car-giu { bottom: 0; }
+  .car-centro { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 22px; transition: opacity .45s, transform .6s cubic-bezier(.6,0,.2,1); }
+  .car-segno { width: clamp(84px, 22vw, 120px); height: auto; overflow: visible; }
+  .car-anello { fill: none; stroke: #e8a405; stroke-width: 3.1; stroke-linecap: round; stroke-dasharray: 224; stroke-dashoffset: 224; transform: rotate(-90deg); transform-origin: 695.16px 780.02px; }
+  .car-testa, .car-braccio { opacity: 0; transition: opacity .5s, transform .7s cubic-bezier(.2,.8,.2,1); transform-box: fill-box; transform-origin: 50% 100%; }
+  .car-testa { transform: scale(.2); transform-origin: 50% 50%; }
+  .car-braccio { transform: translateY(14px); }
+  .car-vivo .car-testa { opacity: 1; transform: none; }
+  .car-vivo .car-braccio { opacity: 1; transform: none; transition-delay: .12s; }
+  .car-marchio { width: clamp(150px, 40vw, 210px); height: auto; clip-path: inset(0 100% 0 0); transition: clip-path 1.1s cubic-bezier(.77,0,.18,1) .2s; }
+  .car-vivo .car-marchio { clip-path: inset(0 0 0 0); }
+  .car-piede { position: absolute; left: 24px; right: 24px; bottom: max(24px, env(safe-area-inset-bottom)); display: flex; justify-content: space-between; align-items: flex-end; transition: opacity .4s; }
+  .car-n { font-size: clamp(44px, 12vw, 72px); font-weight: 600; letter-spacing: -.05em; line-height: .8; font-variant-numeric: tabular-nums; }
+  .car-lab { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: rgba(246,244,238,.55); font-weight: 600; }
+  .car-linea { position: absolute; left: 0; right: 0; top: 50%; height: 1px; margin-top: -.5px; background: #e8a405; transform: scaleX(0); transform-origin: 0 50%; transition: transform .2s linear; }
+  .car-esce .car-centro { opacity: 0; transform: scale(.94); }
+  .car-esce .car-piede { opacity: 0; }
+  .car-apre .car-su { transform: translateY(-101%); }
+  .car-apre .car-giu { transform: translateY(101%); }
+  .car-apre .car-linea { opacity: 0; transition: opacity .3s; }
+  .car-corto .car-marchio { transition-delay: 0s; transition-duration: .5s; }
+</style>
 <script>
-  // movimento: deciso qui, prima del primo disegno, così l'hero non lampeggia.
-  // Se lo script principale non parte entro 3 s, la pagina si mostra comunque.
+  // movimento e caricamento: decisi qui, prima del primo disegno, così l'hero non lampeggia.
+  // Se lo script principale non parte, la pagina si mostra comunque.
   (function (d) {
     d.classList.add('js');
     try { if (localStorage.getItem('humanoide-lingua') === 'en') d.lang = 'en'; } catch (e) {}
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      d.classList.add('mo-pre');
-      setTimeout(function () { d.classList.remove('mo-pre'); }, 3000);
+      d.classList.add('mo-pre', 'carica-on');
+      var via = function () { d.classList.remove('mo-pre'); };
+      document.addEventListener('humanoide:pronto', function () { setTimeout(via, 1500); });
+      setTimeout(via, 6000);
     }
   })(document.documentElement);
 </script>
@@ -35,6 +65,62 @@
 </script>
 </head>
 <body class="home">
+<div class="carica" id="carica" aria-hidden="true">
+  <div class="car-pan car-su"></div><div class="car-pan car-giu"></div>
+  <div class="car-linea" id="car-linea"></div>
+  <div class="car-centro">
+    <svg class="car-segno" viewBox="655 740 80.3 80.3">
+      <circle class="car-anello" id="car-anello" cx="695.16" cy="780.02" r="35.6"/>
+      <path class="car-testa" fill="#e8a405" d="M 695.164062 753.234375 C 699.929688 753.234375 703.796875 757.101562 703.796875 761.867188 C 703.796875 766.636719 699.929688 770.5 695.164062 770.5 C 690.394531 770.5 686.53125 766.636719 686.53125 761.867188 C 686.53125 757.101562 690.394531 753.234375 695.164062 753.234375 "/>
+      <path class="car-braccio" fill="#f6f4ee" d="M 670.816406 765.410156 C 680.554688 766.292969 693.390625 778.027344 693.390625 789.09375 L 693.390625 809.898438 C 686.972656 808.351562 682.324219 803.039062 682.324219 795.957031 L 682.324219 788.648438 C 682.324219 778.46875 677.457031 770.945312 670.816406 765.410156 "/>
+      <path class="car-braccio" fill="#f6f4ee" d="M 719.511719 765.410156 C 709.773438 766.292969 696.933594 778.027344 696.933594 789.09375 L 696.933594 809.898438 C 703.351562 808.351562 708 803.039062 708 795.957031 L 708 788.648438 C 708 778.46875 712.871094 770.945312 719.511719 765.410156 "/>
+    </svg>
+    <img class="car-marchio" src="loghi/humanoide-scuro.svg" width="729" height="100" alt="">
+  </div>
+  <div class="car-piede"><span class="car-n" id="car-n">000</span><span class="car-lab">N.01 · Online First</span></div>
+</div>
+<script>
+  /* caricamento: il numero segue quello che arriva davvero (carattere, copertina, pagina) */
+  (function (d) {
+    if (!d.classList.contains('carica-on')) return;
+    var box = document.getElementById('carica'), n = document.getElementById('car-n'),
+        anello = document.getElementById('car-anello'), linea = document.getElementById('car-linea');
+    var corto = false;
+    try { corto = sessionStorage.getItem('humanoide-visto') === '1' || location.hash.length > 1; sessionStorage.setItem('humanoide-visto', '1'); } catch (e) {}
+    if (corto) box.classList.add('car-corto');
+    var t0 = performance.now(), MIN = corto ? 450 : 1500, MAX = 4500;
+    var meta = 8, visto = 0, finito = false;
+    var su = function (v) { meta = Math.min(100, meta + v); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { su(30); }); else su(30);
+    var img = new Image(); img.onload = img.onerror = function () { su(32); }; img.src = 'rivista-copertina.webp';
+    if (document.readyState === 'complete') su(30); else window.addEventListener('load', function () { su(30); });
+    requestAnimationFrame(function () { box.classList.add('car-vivo'); });
+    function giro(t) {
+      var e = t - t0;
+      if (e > MAX) meta = 100;
+      var limite = meta >= 100 ? 100 : Math.min(meta, 92);
+      var tempo = Math.min(1, e / MIN) * 100;         // mai più veloce del tempo minimo
+      visto += (Math.min(limite, tempo) - visto) * (corto ? .35 : .12);
+      if (Math.min(limite, tempo) - visto < .4 && limite >= 100 && tempo >= 100) visto = 100;
+      var v = Math.round(visto);
+      n.textContent = ('00' + v).slice(-3);
+      anello.style.strokeDashoffset = (224 * (1 - visto / 100)).toFixed(1);
+      linea.style.transform = 'scaleX(' + (visto / 100).toFixed(3) + ')';
+      if (visto >= 100 && !finito) { finito = true; esci(); return; }
+      requestAnimationFrame(giro);
+    }
+    requestAnimationFrame(giro);
+    function esci() {
+      box.classList.add('car-esce');
+      setTimeout(function () {
+        box.classList.add('car-apre');
+        window.HUMANOIDE_PRONTO = true;
+        document.dispatchEvent(new Event('humanoide:pronto'));
+      }, corto ? 120 : 380);
+      setTimeout(function () { d.classList.remove('carica-on'); box.remove(); }, corto ? 1250 : 1500);
+    }
+  })(document.documentElement);
+</script>
 <a class="salta" href="#contenuto"><span lang="it">Vai al contenuto</span><span lang="en">Skip to content</span></a>
 <div class="avanza" aria-hidden="true"><i id="avanza"></i></div>
 <div class="grana" aria-hidden="true"></div>
@@ -441,6 +527,6 @@
 <script src="vendor/gsap.min.js?v=fa1aeabcea" defer></script>
 <script src="vendor/ScrollTrigger.min.js?v=ecd3242f5d" defer></script>
 <script src="vendor/lenis.min.js?v=33626d7a69" defer></script>
-<script src="app.js?v=47d42a0981" defer></script>
+<script src="app.js?v=1af043edae" defer></script>
 </body>
 </html>
