@@ -165,23 +165,24 @@
     etichettaMappa(root.lang); dopoLingua.push(etichettaMappa);
     var gCitta = {}, archi = $$('.arco', mappa), membri = $$('.membro');
     $$('.citta', mappa).forEach(function (g) { gCitta[g.getAttribute('data-citta')] = g; });
-    var attuale = null;
-    var attiva = function (id) {
-      if (id === attuale) return;
-      attuale = id;
+    // dalla lista si accende solo la persona scelta; dalla mappa tutte quelle della città
+    var attuale = null, attualeM = null;
+    var attiva = function (id, persona) {
+      if (id === attuale && persona === attualeM) return;
+      attuale = id; attualeM = persona || null;
       mappa.classList.toggle('c-on', !!id);
       Object.keys(gCitta).forEach(function (k) { gCitta[k].classList.toggle('attiva', k === id); });
       if (id && gCitta[id]) gCitta[id].parentNode.appendChild(gCitta[id]); // davanti alle altre
       archi.forEach(function (a) { a.classList.toggle('attivo', !!id && (id === 'lisbona' || a.getAttribute('data-citta') === id)); });
-      membri.forEach(function (m) { m.classList.toggle('attivo', !!id && m.getAttribute('data-citta') === id); });
+      membri.forEach(function (m) { m.classList.toggle('attivo', !!id && (persona ? m === persona : m.getAttribute('data-citta') === id)); });
     };
     membri.forEach(function (m) {
       var id = m.getAttribute('data-citta');
-      m.addEventListener('pointerenter', function () { attiva(id); });
+      m.addEventListener('pointerenter', function () { attiva(id, m); });
       m.addEventListener('pointerleave', function () { attiva(null); });
-      m.addEventListener('focus', function () { attiva(id); });
+      m.addEventListener('focus', function () { attiva(id, m); });
       m.addEventListener('blur', function () { attiva(null); });
-      m.addEventListener('click', function () { attiva(id); });
+      m.addEventListener('click', function () { attiva(id, m); });
     });
     Object.keys(gCitta).forEach(function (id) {
       var g = gCitta[id];
