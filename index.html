@@ -38,7 +38,7 @@
   .car-piede { position: absolute; left: 24px; right: 24px; bottom: max(24px, env(safe-area-inset-bottom)); display: flex; justify-content: space-between; align-items: flex-end; transition: opacity .4s; }
   .car-n { font-size: clamp(44px, 12vw, 72px); font-weight: 600; letter-spacing: -.05em; line-height: .8; font-variant-numeric: tabular-nums; }
   .car-lab { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: rgba(246,244,238,.55); font-weight: 600; }
-  .car-linea { position: absolute; left: 0; right: 0; top: 50%; height: 1px; margin-top: -.5px; background: #e8a405; transform: scaleX(0); transform-origin: 0 50%; transition: transform .2s linear; }
+  .car-linea { position: absolute; left: 0; right: 0; bottom: calc(max(24px, env(safe-area-inset-bottom)) + clamp(64px, 14vw, 96px)); height: 1px; opacity: .6; background: #e8a405; transform: scaleX(0); transform-origin: 0 50%; transition: transform .2s linear; }
   .car-esce .car-centro { opacity: 0; transform: scale(.94); }
   .car-esce .car-piede { opacity: 0; }
   .car-apre .car-su { transform: translateY(-101%); }
